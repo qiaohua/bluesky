@@ -1,0 +1,350 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>发布文章</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/xi_pb_article.css">
+	<script src="jquery/jquery.min.js"></script>
+</head>
+<body>
+	<div class="wrap">
+		<div class="X_top">
+			<div class="X_top_top">
+				<i id="X_top_top_left"></i>
+				<input type="text" name="" value="搜索会员或关键字" id="ipt">
+				<i id="X_top_top_sousuo"></i>
+				<i id="X_top_top_right"></i>
+			</div>
+			<div id="X_nav">
+				<h2 class="present">发布文章</h2>
+				<h2>问题解答</h2>
+				<h2 id="activity">组织活动</h2>
+				<h2 id="sharell">分享活动</h2>
+			</div>
+		</div>
+		
+		<ul id="X_con">
+			<!-- 发布文章 -->
+			<li class="show" id="X_con_1">
+				
+				<div class="X_con_con">
+					<div class="X_con_con_top">
+						<img src="./img/发布/img_3@2x.png">
+					</div>
+					<div class="X_con_con_bottom">
+						<i class="X_con_portrait"></i>
+						<span>
+							<h2>拍摄珠宝的正确方式</h2>
+							<p>蓝色天边</p>
+						</span>
+					</div>
+				</div>
+			</li>
+			
+			<!-- 问题解答 -->
+			<li id="X_con_2">
+				<div class="X_con_con">
+					<div class="X_con_con_top">
+						<img src="./img/发布/img_1@2x.png">
+					</div>
+					<div class="X_con_con_bottom">
+						<i class="X_con_portrait"></i>
+						<span>
+							<h2>拍摄珠宝的正确方式</h2>
+							<p>蓝色天边</p>
+						</span>
+					</div>
+				</div>
+			</li>
+			<!-- 组织活动 -->
+			<li id="X_con_3">
+				<div id="con">
+					<ul id="list" class="show">
+				 					 		
+					</ul>	
+				</div>
+			</li>
+			<script>
+				function acList(){
+					$.ajax({  
+                      	url:'acListNohis',  
+                      	type:'post',  
+                      	cache:false,  
+                      	dataType:'json',  
+                      	success:function(data) {  
+							$("#list").html("");
+							for(i=0;i<data.length;i++){
+    							$("#list").append('<li class="inner_li">'
+									+'<img src="'+data[i].user.headImg+'" alt="加载失败" class="inner_img">'
+									+'<div class="inner_box">'
+									+'<p class="inner_money">活动名称：<span class="inner_title">'+data[i].title+'</span></p>'
+									+'<p class="inner_fabufang">'+data[i].information+'</p>'
+									+'<p class="inner_qiye">'+data[i].address+'</p>'
+									+'</div>'
+									+'<div class="inner_im"><a href="queryActivity?aid='+data[i].aid+'" style="color:#000">详情</a></div>'
+									+'</li>')
+    						}
+                      	}
+    				})
+				}
+    			$("#activity").click(function(){
+    				 acList(); 
+    			})
+				
+            </script>
+			<!-- 分享活动 -->
+			<li id="X_con_4">
+				<div id="con">
+					<ul id="Alist" class="show">
+				 					 		
+					</ul>	
+				</div>
+			</li>
+		</ul>
+	</div>
+	<script>
+		function shareList(){
+			$.ajax({  
+              	url:'shareListNohis',  
+              	type:'post',  
+              	cache:false,  
+              	dataType:'json',  
+              	success:function(data) {  
+					$("#Alist").html("");
+					for(i=0;i<data.length;i++){
+						$("#Alist").append('<li class="inner_li">'
+						+'<div>'
+						+'<img src="'+data[i].user.headImg+'" alt="加载失败" class="inners_img">'
+						+'<p class="nick">'+data[i].user.nickName+'</p>'
+						+'</div>'
+						+'<div class="inners_box">'
+						+'<p>分享了活动：<span>'+data[i].activity.title+'</span></p>'
+						+'<div><a href="queryActivity?aid='+data[i].activity.aid+'" style="color:#008dcd;">查看活动内容</a></div>'
+						+'<p style="font-size:0.25rem;color:#666;">'+getLocalTime(new Date(data[i].time))+'</p>'
+						+'</div>'
+						+'</li>')
+					}
+              	}
+			})
+		}
+		$("#sharell").click(function(){
+			  shareList();
+		})
+		function getLocalTime(nS){
+			var year = nS.getYear()-100;
+			var month = nS.getMonth()+1;
+			var date = nS.getDate();
+			var hour = nS.getHours();
+			var minute = nS.getMinutes();
+			var second = nS.getSeconds();
+			return "20"+year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second;
+		}
+    </script>
+	<script>
+		function rem(){
+			var html=document.getElementsByTagName('html')[0];
+			var Ww=document.documentElement.clientWidth;
+			var scale=Ww/750;
+			html.style.fontSize=scale*100+"px";
+		}
+		rem();
+		window.onresize=function(){
+			rem();
+		}
+		// 搜索框	
+		$("#ipt").focus(function(){
+			if (ipt.value=="搜索会员或关键字") {
+				ipt.value="";
+				ipt.style.textAlign="left";
+				ipt.style.color="#000";
+				$("#X_top_top_sousuo").get(0).style.display="none";
+			}	
+		}).blur(function(){
+			if (ipt.value=="") {
+				ipt.value="搜索会员或关键字";
+				ipt.style.color="#aaa";
+				ipt.style.textAlign="center";
+				$("#X_top_top_sousuo").get(0).style.display="block";
+			}
+		})
+		
+		// 左下角菜单按钮\
+		$(function(){
+			var kai=true;
+			$(document).on("touchstart",function(ev){
+				var ev=ev||window.event;
+				var target=ev.target||target.srcElement;
+					// 左上角回退效果
+			if(target.id=="X_top_top_left"){
+				history.back();
+				removeCookie("active");
+				removeCookie("share");
+				
+			}
+				//右上角跳转按钮
+			if(target.id=="X_top_top_right"){
+				window.open("./xi_pb_edit.html","_self")
+			}
+				// 悬浮窗“我的”跳转
+			if(target.id=="X_mine")	{
+				window.open("../renLei/my1.html","_self");
+			}
+				// 悬浮窗“分享”跳转
+			if(target.id=="X_share")	{
+				window.open("../xiSiyu/xi_pb_article.html","_self");
+			}
+				// 悬浮窗“知识”跳转
+			if(target.id=="X_nowledge")	{
+				window.open("../guoZhengchen/photography.html","_self");
+			}
+				// 悬浮窗“工单”跳转
+			if(target.id=="X_order")	{
+				window.open("../zhaoChengdong/LSTB_gd_customer.html","_self");
+			}
+			
+				// 悬浮穿动画效果
+				if(target.id=="X_menu"){
+					if(kai){
+						$("#X_nowledge").animate({
+							"left":"0.2rem",
+							"bottom":"1.48rem",
+						},500)
+						$("#X_order").animate({
+							"left":"0.85rem",
+							"bottom":"1.34rem",
+						},500)
+						$("#X_share").animate({
+							"left":"1.35rem",
+							"bottom":"0.95rem",
+						},500)
+						$("#X_mine").animate({
+							"left":"1.45rem",
+							"bottom":"0.3rem",
+						},500)
+						kai=false;
+					}else{
+						$("#X_nowledge").animate({
+							"left":"0.35rem",
+							"bottom":"0.4rem",
+						},500)
+						$("#X_order").animate({
+							"left":"0.35rem",
+							"bottom":"0.4rem",
+						},500)
+						$("#X_share").animate({
+							"left":"0.35rem",
+							"bottom":"0.4rem",
+						},500)
+						$("#X_mine").animate({
+							"left":"0.35rem",
+							"bottom":"0.4rem",
+						},500);
+						kai=true;
+					}
+				}else if(ev.target.id!="X_menu"){
+					$("#X_nowledge").animate({
+						"left":"0.35rem",
+						"bottom":"0.4rem",
+					},500)
+					$("#X_order").animate({
+						"left":"0.35rem",
+						"bottom":"0.4rem",
+					},500)
+					$("#X_share").animate({
+						"left":"0.35rem",
+						"bottom":"0.4rem",
+					},500)
+					$("#X_mine").animate({
+						"left":"0.35rem",
+						"bottom":"0.4rem",
+					},500)
+					kai=true;
+				}
+			})	
+			
+				// 点击头像跳转空间
+			$(".X_con_portrait").on("touchstart",function(){
+				window.open("../renLei/clickAvatar.html","_self");
+			})
+				//切换
+			$('#X_nav h2').on("touchstart",function(){
+				removeCookie("active");
+				removeCookie("share");
+				var i=$('#X_nav h2').index(this);
+				$('#X_nav h2').eq(i).addClass('present').siblings().removeClass('present');
+				$('#X_con>li').eq(i).addClass('show').siblings().removeClass('show');
+			})
+
+			//跳转的tab切换
+			if(getCookie("active")){
+				removeCookie("active");
+				$("#X_nav h2").eq(2).addClass("present").siblings().removeClass("present");
+				$('#X_con>li').eq(2).addClass('show').siblings().removeClass('show');
+			}
+			if(getCookie("share")){
+				removeCookie("active");
+				$("#X_nav h2").eq(3).addClass("present").siblings().removeClass("present");
+				$('#X_con li').eq(3).addClass('show').siblings().removeClass('show');
+			}
+
+			function setCookie(key,value,day){
+				var date=new Date();
+				date.setDate(date.getDate()+day)
+				document.cookie=key+"="+value+";exprise="+date;
+			}
+			function getCookie(key){
+				var arr=document.cookie.split("; ");
+				for (var i = 0; i < arr.length; i++) {
+					var newarr=arr[i].split("=");
+					if(newarr[0]==key){
+						return newarr[1];
+					}
+				};
+			}
+			function removeCookie(key){
+				setCookie(key,"",-1);
+			}
+
+			
+		})
+		function setCookie(key,value,day){
+				var date=new Date();
+				date.setDate(date.getDate()+day)
+				document.cookie=key+"="+value+";exprise="+date;
+		}
+		function getCookie(key){
+			var arr=document.cookie.split("; ");
+			for (var i = 0; i < arr.length; i++) {
+				var newarr=arr[i].split("=");
+				if(newarr[0]==key){
+					return newarr[1];
+				}
+			};
+		}
+		function removeCookie(key){
+			setCookie(key,"",-1);
+		}
+		var X_top_top_left=document.getElementById('X_top_top_left');
+		X_top_top_left.onclick=function(){
+			setCookie("active","active",-1);
+			setCookie("share","share",-1);
+		}
+	window.onload = function(){
+		var i = $!{index};
+    	removeCookie("active");
+    	$("#X_nav h2").eq(i).addClass("present").siblings().removeClass("present");
+    	$('#X_con>li').eq(i).addClass('show').siblings().removeClass('show');
+		if(i==2){
+			acList();
+		}else if(i==3){
+			shareList();
+		}
+	}	
+	
+	</script>
+</body>
+</html>

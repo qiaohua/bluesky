@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>标题</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" href="css/reset.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/gongdanjieshao.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/gongdanjieshao.css">
+</head>
+<body>
+	<div class="head">
+		<p class="back"></p>
+		<span>工单介绍</span>
+		<i></i>
+	</div>
+	<div class="con">
+		<ul>
+			<li>
+				<p>订单编号：${order.orderCode}</p>
+				<div class="time">
+					<span class="bj">
+						<img src="${order.user.hPic}" alt="">
+					</span>
+					<div class="time1">
+						<span>获取创意稿件</span>
+						<span>剩余时间：4天22小时15分钟10秒</span>
+						<span>交易完成</span>
+					</div>
+				</div>
+			</li>
+			<li>
+				<p class="p1">${order.user.pNum}工作室</p>
+				<p class="p2">${order.title}</p>
+				<p class="p3">奖金：<span>${order.money}</span></p>
+				<span class="sheji">${order.t_type.category}</span>
+				<span class="shijian">${order.time}</span>
+			</li>
+			<li>
+				<p class="p1">具体要求</p>
+				<div class="yaoqiu">
+					<p>${order.intro}</p>
+				</div>
+			</li>
+			<li>
+				<p>已接单</p>
+				<ul class="jd">
+					<li>
+						<img src="${order.user.hPic}" alt="">
+						<p>
+							<span>蓝色天边</span>
+							<span>${order.time}</span>
+							<a>已接单</a>
+						</p>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<button id="jiedan">我要接单</button>
+	</div>
+	
+</body>
+</html>

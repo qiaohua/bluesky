@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>标题</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" href="css/reset.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/wode.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/wode.css">
+</head>
+<body>
+	<div class="head">
+		<div class="top">
+			<p class="back"></p>
+			<span>蓝色天边2</span>
+			<div class="select">
+				<div class="show">
+					<p class="go">去往企业站</p>
+					<p class="here">留在公众号</p>
+				</div>
+			</div>
+		</div>
+		<div class="center">
+			<img src="${user.hPic}" alt="头像加载失败">
+		</div>
+		<p class="jieshao">
+			<span class="add"> 
+				${user.city}
+			</span>
+			<i></i>
+			<span class="sex">
+				#if(${user.sex} == 0)
+					保密
+				#elseif(${user.sex} == 1)
+					男
+				#elseif(${user.sex} == 2)
+					女
+				#end
+			</span>
+			<i></i>
+			<span class="age">${user.age}</span>
+		</p>
+	</div>
+	<p class="beijing"></p>
+	<div class="nav">
+		<span class="shoucang">收藏</span>		
+		<span class="xiangce">相册</span>		
+		<span class="jilu">记录</span>		
+		<span class="gonglue">攻略</span>		
+	</div>
+	<div class="WDdongtai">
+		<p class="dongtai">我的动态</p>
+		<p class="say">
+			<span class="shuru">
+				<input type="text" name="" value="说点儿什么，发个动态吧？">
+			</span>
+		</p>
+	</div>
+	<div class="con">
+		<ul>
+			<li>
+				<p class="title">
+				蓝色天空发布了文章
+				<span class="shijian">1小时前</span>
+				</p>
+				<p class="neirong">
+					<span class="zi">
+						<a>说到底说到底说到底说到底说到底说到底说到底说到底说到底说到底说到底说到底说到底说到底说到底</a>
+					</span>
+				</p>
+				<p>
+					<span></span>
+					<span></span>
+				</p>
+			</li>
+		</ul>
+	</div>
+	<div class="na-v">
+		<ul>
+			<li id="nav1"></li>
+			<li id="knowledge"></li>
+			<li id="share"></li>
+			<li id="order"></li>
+			<li id="my"></li>
+		</ul>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="com.jnmd.bluesky.mapper.CanmeraMapper">
+	
+	
+		<resultMap type="camera" id="CameraMap" autoMapping="true">
+			<id column="ca_id" property="ca_id"></id>
+			<collection property="photobook" javaType="arraylist" ofType="photobook" autoMapping="true">
+			<id column="pb_id" property="pb_id"></id>
+			</collection>
+			
+		</resultMap>
+		<select id="getCameras" resultMap="CameraMap">
+			select 
+				c.ca_id, c.pb_id, c.photodescribe, c.collectNumber, c.comment,
+				p.pb_id, p.title, p.url, p.u_id, pc.img_name, pc.ispublic
+			from 
+				t_camera c
+			left join
+				t_photobook p
+			on 
+				c.pb_id = p.pb_id
+			inner join 
+				t_picture pc
+			on
+				p.pb_id = pc.pb_id
+			LIMIT 10
+		</select>
+		
+		
+		
+		<resultMap type="camera" id="CameraMap2" autoMapping="true">
+			<id column="ca_id" property="ca_id"></id>
+			<collection property="p" javaType="photobook" ofType="photobook" autoMapping="true">
+			<id column="pb_id" property="pb_id"></id>
+			</collection>
+		</resultMap>
+		<select id="getCamera" resultMap="CameraMap2">
+			select 
+				c.ca_id, c.pb_id, c.photodescribe, c.collectNumber, c.comment,
+				p.pb_id, p.title, p.url, p.u_id
+			from 
+				t_camera c
+			left join
+				t_photobook p
+			on 
+				c.pb_id = p.pb_id
+			
+			where
+				c.pb_id = #{id}
+			LIMIT 1
+		</select>
+		<insert id="insertPhoto">
+			<selectKey keyColumn="pb_id" keyProperty="pb_id" order="AFTER" resultType="int">
+			select @@identity as pb_id
+			</selectKey>
+			insert into t_photobook(title, url, u_id) values(#{title}, #{url}, #{u_id})
+		</insert>
+		
+		<insert id="insertCamera">
+			insert into t_camera(pb_id, photodescribe) values(#{pb_id}, #{photodescribe})
+		</insert>
+		
+		<insert id="insertPicture">
+			insert into t_picture(img_name, pb_id, ispublic) values(#{img_name},#{pb_id}, #{public})
+		</insert>
+		<select id="getpicture" resultType="Map"> 
+			select
+				p.img_name
+			from 
+				t_picture p
+			WHERE
+				p.pb_id=#{pb_id}	
+			LIMIT 1
+		</select>
+		
+		<select id="getListpicture" resultType="Map"> 
+			select
+				p.img_name
+			from 
+				t_picture p
+			WHERE
+				p.pb_id=#{pb_id}	
+		</select>
+		
+	</mapper>

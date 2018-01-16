@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="com.jnmd.bluesky.mapper.CommentMapper">
+	
+	<resultMap type="comment" id="CommentMap" autoMapping="true">	
+		<id column="co_id"  property="co_id"/>
+	</resultMap> 
+	
+		<insert id="insertComment">
+			<selectKey keyColumn="co_id" keyProperty="co_id" resultType="int" order="AFTER">
+				select @@identity as co_id
+			</selectKey>
+				insert into t_comment (u_id,co_prw_id,co_content,co_time,co_mark)
+				values	(#{u_id},#{co_prw_id},#{co_content},#{co_time},#{co_mark})
+		</insert>
+	
+		 <insert id="insertReplyComment">
+			 <selectKey keyColumn="rc_id" keyProperty="rc_id" resultType="int" order="AFTER">
+				select @@identity as rc_id
+			</selectKey> 
+			
+				insert into t_replycomment (co_id,rc_rc_id,u_id,time,content)
+				values(#{co_id},#{rc_rc_id},#{u_id},#{time},#{content})
+		</insert> 
+		
+		<delete id="deleteReplyComment">
+			delete from t_replycomment where rc_id = #{del_rc}
+		</delete>
+		
+ 		<delete id="deleteComment">
+			delete from t_comment where co_id = #{del_co}
+		</delete>
+		
+<!-- 		<select id="getcoid" resultType="comment">
+			select uid, userName name, password, age from t_user
+			where userName = #{name} and password = #{password}
+		</select>
+		
+		<select id="getrcid" resultType="replyComment">
+			select rc_id from t_replycomment
+			where userName = #{name} and password = #{password}
+		</select>  -->
+		
+		
+		
+		<resultMap type="comment" id="resultC" autoMapping="true">
+			<id column="co_id" property="co_id" />
+			<result column="co_content" property="co_content"/>
+			<result column="co_time" property="co_time"/>
+				 <association property="user" javaType="User">  
+			            <result column="hPic" property="hPic"/>  
+			            <result column="nickName" property="nickName"/>  
+		        </association>
+			<!--
+			collection: 一对多查询(定义集合关系) 
+			property: 指定集合数据的属性名
+			javaType: 指定集合数据的数据类型(不能为java.util.List) 
+			ofType: 指定集合数据的泛型类型
+			-->
+			<collection autoMapping="true" property="rc_list"
+				javaType="arraylist" ofType="replyComment">
+				<!-- 定义集合中每一个泛型类型元素的内容 -->
+				<id column="rc_id" property="rc_id" />
+				<result column="u_id" property="u_id"/>
+				<result column="content" property="content"/>
+				<result column="time" property="time"/>
+					<association property="user" javaType="User">  
+			            <result column="hPic" property="hPic"/>  
+			            <result column="nickName" property="nickName"/>  
+			            <result column="u_id" property="u_id"/>  
+		        </association>
+			</collection>
+		
+	</resultMap>
+		<select id="getComments" resultMap="resultC">
+		<!-- 	select 
+						c.co_id,c.co_content,c.u_id,c.co_time,
+						rc.co_id,rc.rc_id,rc.u_id,rc.content,rc.time,
+						u.nickName,u.hPic,u.u_id
+			from 
+						t_comment c
+			left join 
+						t_replyComment rc
+			on 
+						c.co_id = rc.co_id
+			left join
+						t_user u
+			on        
+						rc.u_id = u.u_id 
+			and
+						c.u_id = u.u_id
+			where 
+						c.co_prw_id = 1 
+			and  
+						c.co_mark = 1 -->
+				select 
+						c.co_id,c.co_content,c.u_id,c.co_time,
+						ud.nickName,ud.hPic,
+						rc.rc_id,rc.u_id,rc.content,rc.time,
+						u.nickName,u.hPic
+			from 
+						t_comment c
+			inner join 
+						t_user ud
+			on 
+						c.u_id = ud.u_id
+
+			left join 
+						t_replyComment rc
+			on 
+						c.co_id = rc.co_id
+			left join
+						t_user u
+			on        
+						rc.u_id = u.u_id 
+
+			
+		</select>
+		
+		
+	</mapper>

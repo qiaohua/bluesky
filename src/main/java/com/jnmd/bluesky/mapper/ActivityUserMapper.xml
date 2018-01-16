@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnmd.bluesky.mapper.ActivityUserMapper">
+
+	<resultMap type="ActivityUser" id="ActAndUser">
+		<id column="j_id" property="auid"/>
+		<association property="user" javaType="User">
+			<id column="u_id" property="uid"/>
+			<result column="nickName" property="nickName"/>
+		</association>
+	</resultMap>
+	<select id="getUser" resultMap="ActAndUser">
+		SELECT j.j_id,u.u_id,u.nickName
+		FROM t_join j LEFT JOIN t_user u
+		ON j.u_id=u.u_id
+		WHERE j.ac_id=#{aid}
+		<if test="count != 0">
+			LIMIT #{count}
+		</if>
+	</select>
+	<select id="getCount" resultType="int">
+		SELECT count(*) FROM t_join
+		WHERE ac_id=#{aid}
+	</select>
+	<delete id="delAcUser">
+		DELETE FROM t_join
+		WHERE ac_id=#{aid}
+		AND u_id=#{uid}
+	</delete>
+	<insert id="addAcUser">
+		INSERT INTO t_join(ac_id,u_id)
+		VALUES(#{aid},#{uid})
+	</insert>
+</mapper>	

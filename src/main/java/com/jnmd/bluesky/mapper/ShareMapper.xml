@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnmd.bluesky.mapper.ShareMapper">
+	<resultMap type="Share" id="ShareMap">
+		<id column="sh_id" property="sid"/>
+		<result column="time" property="time"/>
+		<association property="user" javaType="User">
+			<id column="u_id" property="uid"/>
+			<result column="nickName" property="nickName"/>
+			<result column="hPic" property="headImg"/>
+		</association>
+		<association property="activity" javaType="Activity">
+			<id column="ac_id" property="aid"/>
+			<result column="title" property="title"/>
+		</association>
+	</resultMap>
+	<insert id="saveShare">
+		<selectKey keyColumn="sh_id" keyProperty="sid" order="AFTER" resultType="int">
+			select @@identity as uid
+		</selectKey>
+		INSERT INTO t_share(u_id,ac_id,time)
+		VALUES(#{uid},#{aid},#{time}) 
+	</insert>
+	
+	<select id="getShare" resultMap="ShareMap">
+		SELECT * FROM t_share
+		WHERE u_id=#{uid}
+		AND ac_id=#{aid}
+	</select>
+	
+	<select id="getList" resultMap="ShareMap">
+		SELECT b.sh_id,b.u_id,b.ac_id,title,time,nickName,hPic
+		FROM (SELECT sh_id,sh.u_id,sh.ac_id,title,time
+				FROM t_share sh LEFT JOIN t_activity a
+				ON sh.ac_id=a.ac_id) b LEFT JOIN t_user u
+				ON u.u_id=b.u_id
+		ORDER BY time DESC
+	</select>
+</mapper>	

@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>蓝色天边涂像空间</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="stylesheet" href="css/reset.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/fabu1.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/fabu1.css">
+</head>
+<body>
+	<div class="outer">
+		<div class="head">
+			<div id="hui"></div>
+			<span id="fasong">发送</span>
+		</div>
+		<form action ="addArticle" method="post" enctype="multipart/form-data">
+			<input type="submit" name="" id="fasong1" value="" opacity=0>
+					<div class="con">
+						<div class="con1">
+							<span class="span1">标题</span><input type="text" name="title" id="ip1" value="">
+						</div>
+						
+						<input type="file" name="file" id="ip3" value="">
+						<span class="span2">内容</span><textarea name="content" id="ip2"></textarea>
+						<ul>
+							<li id="jia"></li>
+						</ul>
+						<p>(最多上传五张图片，单张图片大小小于500x500)</p>
+					</div>
+			</form>
+	</div>
+
+</body>
+</html>

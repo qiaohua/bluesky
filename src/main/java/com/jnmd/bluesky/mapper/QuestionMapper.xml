@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnmd.bluesky.mapper.QuestionMapper">
+	<resultMap type="Questions" id="questions" autoMapping="true">
+		<id column="q_id" property="qid"></id>
+		<result column="u_id" property="uid"></result>
+		<result column="time" property="time"></result>
+		<result column="intro" property="intro"></result>
+		<result column="amount" property="amount"></result>
+		<collection property="solutions" javaType="arraylist" ofType="Solution" autoMapping="true">
+			<id column="s_id" property="sid"></id>
+			<result column="u_id" property="uid"></result>
+			<result column="time" property="time"></result>
+			<result column="content" property="content"></result>
+			<result column="q_id" property="qid"></result>
+			
+		</collection>
+	</resultMap>
+	<!-- 保存问题 -->
+	<insert id="saveQuestion">
+		insert into t_questions(intro,u_id,time,amount) 
+		values(#{intro},#{user.u_id},#{time},#{amount})
+	</insert> 
+	<!-- 查询问题 -->
+	<select id="getQuestions" resultMap="questions">
+	 	select q.time,q.q_id,q.u_id,q.intro,q.amount,
+	 		   s.q_id,s.time,s.content,s.u_id
+	 	from t_questions q
+	 	left join t_solution s
+	 	on q.q_id=s.q_id
+	</select>
+	<!-- 通过id删除问题 -->
+	<delete id="deleteQuestions">
+		delete from t_questions
+		where q_id=#{qid}
+	</delete>
+	<!-- 通过id修改问题 -->
+	<update id="updataQuestions">
+		update t_questions set amount = #{amount}
+		where q_id = #{qid}
+	</update>
+</mapper>

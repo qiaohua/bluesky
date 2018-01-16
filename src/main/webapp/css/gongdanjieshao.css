@@ -1,0 +1,201 @@
+		html{
+			font-size: 100px;
+		}
+		.head{
+			width: 100%;
+			height: 0.88rem;
+			background: #5a5954;
+			position: relative;
+			text-align: center;
+			line-height: 0.88rem;
+		}
+		.head p{
+			display: inline-block;
+			width: 0.24rem;
+			height: 0.41rem;
+			background:url("../img/gongdan/btn_1_n@2x.png") 0 0 no-repeat;
+			background-size: 100%;
+			position: absolute;
+			top:0.19rem;
+			left: 0.3rem;
+		}
+		.head span{
+			font-size: 0.34rem;
+			color: white;
+		}
+		.head i{
+			display: inline-block;
+			width: 0.32rem;
+			height: 0.31rem;
+			background:url("../img/gongdan/btn_3_n@2x.png") 0 0 no-repeat;
+			background-size: 100%;
+			position: absolute;
+			top:0.25rem;
+			right: 0.3rem;
+		}
+		.con{
+			width: 100%;
+			height: 100%;
+			background: #eeeeee;
+			padding-top: 0.2rem;
+		}
+		.con li{
+			background: white;
+			margin-top: 0.2rem;
+		}
+		.con li:nth-child(1) p{
+			font-size: 0.26rem;
+			color: #373737;
+			margin: 0rem 0.2rem;
+			border-bottom: 1px solid #eeeeee;
+		}
+		.time{
+			width: 100%;
+			height: 1.8rem;
+			overflow: hidden;
+		}
+		.time .bj{
+			float: left;
+		}
+		.time .bj{
+			display: inline-block;
+			width: 0.28rem;
+			height: 1.3rem;
+			background: url("../img/gongdan/btn_6_h@2x.png") 0 0 no-repeat;
+			background-size: 100%;
+			position: relative;
+			margin-left: 0.37rem;
+			margin-top: 0.26rem;
+		}
+		.time1{
+			float: left;
+			margin-top: 0.25rem;
+			margin-left: 0.22rem;
+		}
+		.time1 span:nth-child(1){
+			display: block;
+			font-size: 0.26rem;
+			color: #373737;
+		}
+		.time1 span:nth-child(2){
+			display: block;
+			font-size: 0.24rem;
+			color: #aaa;
+			margin-top: 0.1rem;
+		}
+		.time1 span:nth-child(3){
+			display: block;
+			font-size: 0.24rem;
+			color: #aaa;
+			margin-top: 0.19rem;
+		}
+		.time img{
+			width: 100%;
+			position: absolute;
+			bottom: 0.04rem;
+		}
+		.con li:nth-child(2) .p1{
+			width: 85%;
+			height: 0.65rem;
+			background: url("../img/gongdan/img_6@2x (3).png") 0 0 no-repeat;
+			background-size:0.66rem 0.65rem;
+			font-size: 0.26rem;
+			color: #373737;
+			line-height: 0.65rem;
+			padding-left: 0.82rem;
+			margin-top: 0.2rem;
+			margin-left: 0.2rem;
+		}
+		.con li:nth-child(2) .p2{
+			font-size: 0.26rem;
+			color: #373737;
+			margin-left: 0.2rem;
+			margin-top: 0.23rem;
+		}
+		.con li:nth-child(2) .p3{
+			font-size: 0.26rem;
+			color: #373737;
+			margin-left: 0.2rem;
+			margin-right: 0.2rem;
+			margin-top: 0.12rem;
+			padding-bottom: 0.24rem;
+			border-bottom: 1px solid  #eeeeee;
+
+		}
+		.con li:nth-child(2) .p3 span{
+			color: #f95838;
+		}
+		.sheji{
+			display: inline-block;
+			width: 2.4rem;
+			height: 0.3rem;
+			background:  url("../img/gongdan/img_1@2x (2).png") 0.78rem center no-repeat;
+			background-size: 0.31rem 0.25rem;
+			padding-left: 1.2rem;
+			font-size: 0.24rem;
+			color: #aaa;
+			padding-bottom: 0.1rem;
+		}
+		.shijian{
+			display: inline-block;
+			width: 1.9rem;
+			height: 0.3rem;
+			background:  url("../img/gongdan/img_2@2x (2).png") 0.41rem center no-repeat;
+			background-size: 0.25rem 0.25rem;
+			padding-left: 0.8rem;
+			font-size: 0.24rem;
+			color: #aaa;
+			border-left: 1px solid  #eeeeee;
+			
+		}
+		.con li:nth-child(3) p{
+			margin-left: 0.2rem;
+			margin-right: 0.2rem;
+		}
+		.con li:nth-child(3) .p1{
+			padding-top: 0.21rem;
+			padding-bottom: 0.21rem;
+			border-bottom: 0.01rem solid #eeeeee;
+			font-size: 0.26rem;
+			color: #373737;
+		}
+		.yaoqiu{
+			margin-top: 0.28rem;
+			font-size: 0.24rem;
+			color: #373737;
+		}
+		#jiedan{
+			width: 100%;
+			height: 0.9rem;
+			background: #313035;
+			font-size: 0.34rem;
+			color: #fff;
+			border: none;
+		}
+		.con li:nth-child(4) {
+			width: 100%;
+			height: 2.2rem;
+		}
+		.jd li{
+			width:100%;
+			height: 0.65rem;
+		}
+		.jd img{
+			float: left;
+			margin-left: 0.2rem;
+			width: 0.66rem;
+			height: 0.65rem;
+		}
+		.jd p{
+			float: right;
+			width: 6.1rem;
+			height: 0.65rem;
+		}	
+		.jd p span{
+			display: block;
+		}	
+		.jd p a{
+			float: right;
+			position: relative;
+			top: -0.62rem;
+		}		

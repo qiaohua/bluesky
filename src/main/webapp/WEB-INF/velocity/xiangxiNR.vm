@@ -1,0 +1,576 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>蓝色天边涂像空间</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="css/reset.css">
+	<script src="jquery/jquery.min.js"></script>
+	<script src="js/xiangxiNR.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/xiangxiNR.css">
+	<style>
+		.outer11{
+			width: 6rem;
+			margin: 0 auto;
+			background: #fdfcf9;
+			border: 1px solid #000;
+			border-radius:0.3rem;
+			padding: 0.2rem;
+			overflow: hidden;
+
+		}
+		#title h2,#con h2{
+			font-size: 0.28rem;
+		}
+		#title input{
+			width: 5.8rem;
+			height: 0.3rem;
+			font-size: 0.22rem;
+			padding: 0 0.1rem;
+		}
+		#con11 textarea{
+			width: 5.8rem;
+			height: 1rem;
+			font-size: 0.2rem;
+			padding: 0.1rem;
+		}
+		#con11 p{
+			font-size: 0.16rem;
+			text-align: right;
+		}
+		#btn{
+			float: right;
+			height: 0.3rem;
+			line-height: 0.3rem;
+			font-size: 0.18rem;
+			padding: 0.03rem 0.05rem;
+			background: #5f5f62;
+			border: 1px solid #000;
+			border-radius: 0.1rem;
+			margin-top: 0.1rem;
+			cursor: pointer;
+		}
+		#ban{
+			overflow: hidden;
+		}
+		#ban li{
+			margin:0.1rem 0;
+			border: 1px solid #000;
+			overflow: hidden;
+		}
+		#ban li h2{
+			font-size: 0.2rem;
+			background:#777;
+			color: #fff;
+			padding:0px 0.1rem;
+		}
+		#ban li p{
+			font-size: 0.18rem;
+			padding:0px 0.1rem;
+		}
+		.delect{
+			float: right;
+			font-size: 0.16rem;
+			background:green;
+			padding: 0.03rem 0.05rem;
+			margin:0.05rem 0.05rem;
+			
+		}
+		.huifu{ 
+			border-top: 1px solid #000;
+			padding: 0.1rem;
+			position: relative;
+		}
+		.pinglun{
+			border-top: 1px solid #000;
+			padding: 0.1rem;
+			position: relative;
+		}
+		.wenti{ 
+			border-top: 0.01rem solid #000;
+			padding: 0.1rem;
+			position: relative;
+		}
+		.hc{
+			display: none;
+		}
+		.touxiang{
+			display: inline-block;
+			width: 0.6rem;
+			height: 0.6rem;
+			border:  0.01rem solid #000;
+			background: red;
+			
+		}
+		.nickname{
+			display: inline-block;
+			height:0.1rempx;
+			font-size:0.2rempx; 
+			position: absolute;
+			left: 0.8rem;
+			top: 0.3rem;
+		}
+		.date{
+			display: inline-block;
+			height:0.1rem;
+			font-size: 0.1rem; 
+			position: absolute;
+			left: 0.8rem;
+			top:0.7rem;
+		}
+		.date_rc{
+			display: inline-block;
+			height:0.1rem;
+			font-size: 0.1rem; 
+			position: absolute;
+			top: 0.35rem;
+		}
+		.time{
+			display: inline-block;
+			height:0.1rem;
+			font-size: 0.1rem; 
+			position: absolute;
+			left: 0.8rem;
+			top: 0.8rem;
+		}
+		.nr{
+			display: inline-block;
+			height:0.1rem;
+			font-size: 0.2rem; 
+			position: absolute;
+			left: 1.45rem;
+			top: 0.4rem;
+		}
+		.wt{ 
+			position: relative;
+			margin-left:0.5rem;
+		}
+		.touxiang1{
+			display: inline-block;
+			width: 0.4rem;
+			height: 0.4rem;
+			border:  0.01rem solid #000;
+			background: red;
+			
+		}
+		.nickname1{
+			display: inline-block;
+			height:0.1rem;
+			font-size: 0.15rem; 
+			position: absolute;
+			left: 0.6rem;
+		}
+		.date1{
+			display: inline-block;
+			height:0.1rem;
+			font-size: 0.07rem; 
+			position: absolute;
+			left: 0.6rem;
+			top: 0.15rem;
+		}
+		.time1{
+			display: inline-block;
+			height:0.1rem;
+			font-size: 0.07rem; 
+			position: absolute;
+			left: 0.6rem;
+			top: 0.25rem;
+		}
+		.nr1{
+			display: inline-block;
+			height:0.1rem;
+			font-size: 0.17rem; 
+			position: absolute;
+			left: 1.6rem;
+			top: 0.15rem;
+		}
+		.flag_rc{
+			display:none;
+		}
+		.flag_co{
+			display:none;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="top">
+			<div class="top-left"></div>
+			<span>${article.title}</span>
+			<div class="top-right" collect=${article.collect}  a_id=${article.a_id}></div>
+		</div>
+		<div class="con">
+			<div class="con-top">
+				<img src="./img/xiangxiNR/img_1@2x.png" alt="">
+				<p>蓝色天边</p>
+				<span>${article.time}</span>
+			</div>
+			<div class="con-center">
+				<img src=${article.illustrated} alt="">
+				<p>${article.content}</p>
+				<div class="con-center-foot">
+					<img src="img/xiangxiNR/img_3@2x.png" alt="">
+					<p>走过别忘记点个赞呗</p>
+				</div>
+			</div>
+		</div>
+		<div class="foot">
+			<!-- <div class="foot-top">
+				<img src="img/xiangxiNR/img_1@2x.png" alt="">
+				<p>蓝色天边2</p>
+				<span>2017.06.10  10:23</span>
+			</div> -->
+			<div class="outer11">
+			<div id="con11">
+				<h2>评论:</h2>
+				<textarea name="" id="txt_con" cols="30" rows="10"></textarea>
+				<p>还可以输入<span id="number">120</span>字</p>
+			</div>	
+			<p id="btn">确认发送</p>
+			<div class="hc">
+				<p class="huifu">回复</p>
+				<p class="shanchu">删除</p>
+			</div>
+			<ul id="ban" style="clear:both">
+			</ul>
+			<div class="yincang">
+			
+		</div>
+		</div>
+		<!-- <div class="foot-foot">
+				<input type="text" name="" value="说说你的看法" id="ipt">
+		</div> -->
+	</div>
+<script>
+//评论
+
+			var del_rc = 0;
+	var del_co = 0;
+	
+		window.onload = function(){
+				$.ajax({
+					type : "post",
+					url : "getCO",
+					async : false,
+					data : {								
+					},
+					dataType : 'json',
+					success:function(data){
+						var list= data.list;
+						for(var i = 0 ; i < list.length ; i++ ){
+							
+							del_co = list[i].co_id;
+							var lis=$("<li></li>")
+							lis.html("<div class='pinglun'>"+"<p>点击内容删除或回复</p>"
+									+"<span class='flag_co'>"+del_co+"</span>"
+									+"<span class='touxiang'>"+"<img src='list[i].user.hPic' alt='加载失败' style='font-size:0.14rem'>"+"</span>"
+									+"<span class='nickname'>"+list[i].user.nickName+"</span>"
+									+"<span class='date'>"+list[i].co_time+"</span>"
+									+"<span class='nr'>"+list[i].co_content+"</span>"
+									+"</div>")
+									$("#ban").append(lis)
+									fn();
+							
+										for(var j = 0 ; j < list[i].rc_list.length ;j++ ){
+												if(list[i].rc_list[j].rc_id == 0){
+														continue;
+												}else{
+													var hs=$("<div></div>")
+															hs.html("<p class='wenti'>"+"<span class='touxiang1'></span>"
+																+"<span class='flag_rc'>"+list[i].rc_list[j].rc_id+"</span>"
+																+"<span class='nickname1'>"+list[i].rc_list[j].user.nickName+"@"+list[i].user.nickName+"</span>"
+																+"<span class='date_rc'>"+list[i].rc_list[j].time+"</span>"
+																+"<span class='nr1'>"+list[i].rc_list[j].content+"</span>"
+																				+"</p>");
+																$("#ban").append(hs)
+																	fn();
+														
+														console.log(list[i].rc_list[j]);
+													}
+										}
+																
+											
+						}
+							
+						
+					},
+					error:function(){
+						console.log("上传失败");
+					}
+				});
+				
+		}
+			
+		$(function(){
+			$("#btn").click(function(){
+				fn1();		
+			})
+			
+			
+			
+			fn=function(){
+				$(".pinglun").click(function(){
+					del_co = $(".flag_co").html();
+					$(".hc").show();
+					$_this=$(this).parent();
+					$_this1=$(this);
+					$(".shanchu").click(function(){
+						
+						$.ajax({
+									type : "post",
+									url : "deleteCO",
+									async : false,
+									data : {								
+										del_co : del_co
+									},
+									dataType : 'json',
+									success:function(data){
+										console.log("删除成功");
+									},
+									error:function(){
+										console.log("删除失败");
+									}
+								});
+						
+						$_this.remove();
+						$(".hc").hide();
+					})
+					
+					$(".huifu").click(function(){
+						$(".yincang").html("<input type='text' name='' value='' id='tijiao'>"
+						+"<p id='tj'>提交</p>")
+						$("#tj").click(function(){
+							var nowDate=new Date();
+							var year1=nowDate.getFullYear();
+							var month1=nowDate.getMonth()+1;
+							var day1=nowDate.getDate();
+							var hour1=nowDate.getHours();
+							var minu1=nowDate.getMinutes();
+							if (month1<10) {
+								month1="0"+month1;
+							}
+							if (day1<10) {
+								day1="0"+day1;
+							}
+							if (hour1<10) {
+								hour1="0"+hour1;
+							}
+							if (minu1<10) {
+								minu1="0"+minu1;
+							}
+							var hs=$("<div></div>")
+							var content= $("#tijiao").val();
+							var co_id =1;
+							var u_id =1;
+							var rc_rc_id="1";
+							var time = year1+"-"+month1+"-"+day1 +"  "+ hour1+":"+minu1;
+							
+							console.log("准备进入ajax");
+							$.ajax({
+									type : "post",
+									url : "testAjaxController1",
+									async : false,
+									data : {
+										content : content,
+										co_id : co_id,
+										u_id : u_id,
+										rc_rc_id : rc_rc_id,
+										time : time
+									},
+									dataType : 'json',
+									success:function(data){
+										console.log("调用成功");
+											var rc_id = data.rc_id;
+											hs.html("<p class='wenti'>"+"<span class='touxiang1'></span>"
+											+"<span class='flag_rc'>"+rc_id+"</span>"
+											+"<span class='nickname1'>回复昵称@发布昵称</span>"
+											+"<span class='date1'>"+year1+"-"+month1+"-"+day1+"</span>"
+											+"<span class='time1'>"+hour1+":"+minu1+"</span>"
+											+"<span class='nr1'>"+content+"</span>"
+															+"</p>");
+											$_this1.after(hs);
+											$(".yincang").html("");
+											console.log("=================");
+											console.log(data.rc_id);
+											console.log("=================");
+											fn();
+									},
+									error:function(){
+										console.log("调用失败");
+									}
+								});
+						
+							
+						})
+						$(".hc").hide()
+					})
+				})
+				$(".wenti").click(function(){
+					del_rc = $(".flag_rc").html();
+					$(".hc").show();
+					$_this=$(this).parent();
+					$_this1=$(this);
+					$(".shanchu").click(function(){
+						
+						$.ajax({
+									type : "post",
+									url : "deleteRC",
+									async : false,
+									data : {								
+										del_rc : del_rc
+									},
+									dataType : 'json',
+									success:function(data){
+										console.log("删除成功");
+									},
+									error:function(){
+										console.log("删除失败");
+									}
+								});
+						
+						$_this.remove();
+						$(".hc").hide();
+					})
+					
+					$(".huifu").click(function(){
+						$(".yincang").html("<input type='text' name='' value='' id='tijiao'>"
+						+"<p id='tj'>提交</p>")
+						$("#tj").click(function(){
+							var nowDate=new Date();
+							var year1=nowDate.getFullYear();
+							var month1=nowDate.getMonth()+1;
+							var day1=nowDate.getDate();
+							var hour1=nowDate.getHours();
+							var minu1=nowDate.getMinutes();
+							if (month1<10) {
+								month1="0"+month1;
+							}
+							if (day1<10) {
+								day1="0"+day1;
+							}
+							if (hour1<10) {
+								hour1="0"+hour1;
+							}
+							if (minu1<10) {
+								minu1="0"+minu1;
+							}
+							var hs=$("<div></div>")
+							var content= $("#tijiao").val();
+							var co_id =1;
+							var u_id =1;
+							var rc_rc_id="1";
+							var time = year1+"-"+month1+"-"+day1 +"  "+ hour1+":"+minu1;
+							
+							console.log("准备进入ajax");
+							$.ajax({
+									type : "post",
+									url : "testAjaxController1",
+									async : false,
+									data : {
+										content : content,
+										co_id : co_id,
+										u_id : u_id,
+										rc_rc_id : rc_rc_id,
+										time : time
+									},
+									dataType : 'json',
+									success:function(data){
+										console.log("调用成功");
+											var rc_id = data.rc_id;
+											hs.html("<p class='wenti'>"+"<span class='touxiang1'></span>"
+											+"<span class='flag_rc'>"+rc_id+"</span>"
+											+"<span class='nickname1'>回复昵称@发布昵称</span>"
+											+"<span class='date1'>"+year1+"-"+month1+"-"+day1+"</span>"
+											+"<span class='time1'>"+hour1+":"+minu1+"</span>"
+											+"<span class='nr1'>"+content+"</span>"
+															+"</p>");
+											$_this1.after(hs);
+											$(".yincang").html("");
+											console.log("=================");
+											console.log(data.rc_id);
+											console.log("=================");
+											fn();
+									},
+									error:function(){
+										console.log("调用失败");
+									}
+								});
+						
+							
+						})
+						$(".hc").hide()
+					})
+				})
+			}
+			
+			
+			fn1=function(){
+				
+				var nowDate=new Date();
+				var year=nowDate.getFullYear();
+				var month=nowDate.getMonth()+1;
+				var day=nowDate.getDate();
+				var hour=nowDate.getHours();
+				var minu=nowDate.getMinutes();
+				if (month<10) {
+					month="0"+month;
+				}
+				if (day<10) {
+					day="0"+day;
+				}
+				if (hour<10) {
+					hour="0"+hour;
+				}
+				if (minu<10) {
+					minu="0"+minu;
+				}
+				var co_content= $("#txt_con").val();
+				var co_mark = "1";
+				var u_id = "3";
+				var co_prw_id = "1";
+				var co_time = year+"-"+month+"-"+day +"  "+ hour+":"+minu;
+
+				console.log("准备进入ajax");
+				$.ajax({
+						type : "post",
+						url : "testAjaxController",
+						async : false,
+						data : {
+							co_content:co_content,
+							co_mark:co_mark,
+							u_id:u_id,
+							co_prw_id:co_prw_id,
+							co_time:co_time
+						},
+						dataType : 'json',
+						success:function(data){
+											del_co = data.co_id;
+							var lis=$("<li></li>")
+											lis.html("<div class='pinglun'>"+"<p>点击内容删除或回复</p>"
+											+"<span class='flag_co'>"+del_co+"</span>"
+											+"<span class='touxiang'></span>"
+											+"<span class='nickname'>小明</span>"
+											+"<span class='date'>"+year+"-"+month+"-"+day+"</span>"
+											+"<span class='time'>"+hour+":"+minu+"</span>"
+											+"<span class='nr'>"+$("#txt_con").val()+"</span>"
+											+"</div>")
+											console.log("=================");
+											console.log(data.co_id);
+											console.log("=================");
+											$("#ban").append(lis)
+											fn();
+										
+						},
+						error:function(){
+							console.log("调用失败");
+						}
+					});
+			
+			}
+		})
+</script>
+</body>
+</html>

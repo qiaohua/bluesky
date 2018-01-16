@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>蓝色天边涂像空间</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/jsjc.css">
+	<link rel="stylesheet" href="css/sheyingZS.css">
+	<script src="jquery/jquery.min.js"></script>
+	<script src="js/jsjc.js"></script>
+	<script src="js/sheyingZS.js"></script>
+	<style>
+		.jc{
+			border: 0.02rem solid #ccc;
+			font-size: 0.3rem;
+			padding-left:0.2rem;
+		}
+		.jsjc{
+			width:7.1rem;
+			height:100%;
+			overflow:hidden;
+		}
+		.title1{
+			font-size:0.4rem;
+			margin-left:0.2rem;
+			
+		}
+		.con1{
+			font-size:0.3rem;
+			float:left;
+			margin-top:0.2rem;
+		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="top">
+			<div class="left">
+				<img src="img/fabu/btn_3_n@2x.png" alt="">
+			</div>
+			<div class="nav">
+				<input type="text" name="" value="搜索会员或关键字">	
+			</div>
+			<div class="right">
+				<a href="/bluesky/uploadFileVM"><img src="img/fabu/btn_1_n@2x.png" alt=""></a>
+			</div>
+		</div>
+		<div class="tit">
+			<div class="titouter">
+				<span class="select">摄影展示</span>
+				<span id="jumps">招聘信息</span>
+				<span id="techon">技术教程</span>
+				<span>会员展示</span>
+			</div>
+		</div>
+		<div class="conouter">
+			<div class="con">	
+				#foreach($c in $cameras)
+				<div class="con-left">
+					<div class="con-left1">
+						<a href="getCanmeras?id=$c.photobook[0].pb_id"><img src="$c.photobook[0].url$imgNames[$velocityCount]"  id="img2"></a>
+						<div class="con-left1-foot">
+							<a href=""><img src="img/fabu/IMG_3@2x.png" alt=""></a>
+							<p>$c.photobook[0].title</p>	
+							<span>蓝色天边</span>
+						</div>
+					</div>
+				</div>			
+				#end			
+			</div>	
+			<div class="con">
+				<ul class="job1" id="job">
+				
+				</ul>
+			</div>
+			<div class="con">
+				<a href="/bluesky/fabujc">发布技术教程</a>
+				<ul class="foot1" id="tech">
+				
+				</ul>
+			</div>
+			
+
+			<div class="con">
+			</div>
+			
+		</div>
+		
+		<div class="caidan" id="caidan">
+			
+				<img src="img/fabu/btn_7_n@2x.png" alt="" id="caidan1">
+				<img src="img/fabu/btn_6_n@2x.png" alt="" id="caidan2">
+				<img src="img/fabu/btn_5_n@2x.png" alt="" id="caidan3">
+				<img src="img/fabu/btn_4_n@2x.png" alt="" id="caidan4">
+			
+		</div>
+	</div>
+
+<script>
+<!-- 技术教程 -->
+		function tec(){	
+			$.ajax({ 
+                      	url:'AllTec',  
+                      	type:'post',  
+                      	async:true,  
+                      	dataType:'json',  
+                      	success:function(data) {
+			
+							$("#tech").html("");
+							for(i=0;i<data.length;i++){
+							
+    							$("#tech").append('<li class="jsjc">'
+									+'<img src="'+data[i].user.hPic+'" alt="加载失败" >'
+									+'<div>'
+									+'<p class="title1">技术教程名称：<span>'+data[i].title+'</span></p>'
+									+'<p class="con1">'+data[i].content+'</p>'
+									+'</div>'
+									+'</li>')
+    						}
+					}
+                      	
+    				})
+				
+			}
+    			$("#techon").click(function(){
+    				 tec(); 
+    			})
+
+
+<!-- 招聘信息 -->
+			function jump(){	
+			$.ajax({ 
+                      	url:'getjump',  
+                      	type:'post',  
+                      	async:false,  
+                      	dataType:'json',  
+                      	success:function(data) {
+			
+							$("#job").html("");
+							for(i=0;i<data.length;i++){
+							
+    							$("#job").append('<li class="jc">'
+									+'<p>招聘职位:'+data[i].position+'</p>'
+									
+									+'<p >描述：<span>'+data[i].describe+'</span></p>'
+									+'<p >招聘要求：'+data[i].requirement+'</p>'
+									+'<p >薪资：'+data[i].salary+'</p>'
+									+'<p >招聘人数：'+data[i].number+'</p>'
+									+'</li>')
+    						}
+					}
+                      	
+    				})
+				
+			}
+    			$("#jumps").click(function(){
+    				 jump(); 
+    			})
+				
+	 </script>
+</body>
+</html>

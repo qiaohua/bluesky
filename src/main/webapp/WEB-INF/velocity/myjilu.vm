@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>蓝色天边涂像空间</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">	
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/myjilu.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<script src="js/myHistory.js"></script>
+</head>
+<body>
+	<div class="outer">
+		<div class="head">
+			我的记录
+			<div id="hui"></div>
+			<div id="nve">编辑</div>
+		</div>
+		<ul>
+			#foreach($hi in $!{list})
+			<li>
+				<p class="title"><a href="$!{hi.url}">$!{hi.title}</a></p>
+				<span class="date">$!date.format("yyyy-MM-dd HH:mm:dd",$!{hi.time})</span>
+                <div class="del"><a href="delHistoryByIdNohis?hid=$!{hi.hi_id}">删除</a></div>
+			</li>
+			#end
+		</ul>
+	</div>
+	<div class="come" id="clear">
+		<a href="/bluesky/delHistoryAllNohis?uid=$!{user.uid}">清空记录</a>
+	</div>
+<script>
+    if($!{isTF}==0){
+    	$(".del").show();
+		$("#nve").html("取消")
+		$("#clear").show();
+    }else{
+    	$(".del").hide();
+		$("#nve").html("编辑")
+		$("#clear").hide();
+    }
+</script>
+</body>
+</html>

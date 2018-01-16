@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jnmd.bluesky.mapper.UserMapper">
+
+	<select id="getUserByMphone" resultType="User">
+		select u_id, mphone,  hpic, nickName, sex, age, city, isAdmin 
+		from t_user 
+		where mphone = #{mphone}
+	</select>
+	
+	<select id="getUser" resultType="User">
+		select u_id, mphone,  hpic, nickName, sex, age, city, isAdmin 
+		from t_user 
+		where u_id = #{uid}
+	</select>
+	
+	<insert id="saveUser">
+		<selectKey keyColumn="uid" keyProperty="uid" order="AFTER" resultType="int">
+			select @@identity as uid
+		</selectKey>
+		insert into t_user(mphone) 
+		values(#{mphone})
+	</insert>
+	
+	<update id="updateUser">
+		update t_user set 
+		headImg = #{headImg}, nickName = #{nickName}, sex = #{sex}, age = #{age}, city = #{city}
+		where uid = #{uid}
+	</update>
+	
+</mapper>
+	

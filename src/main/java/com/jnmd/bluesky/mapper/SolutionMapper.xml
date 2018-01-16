@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnmd.bluesky.mapper.SolutionMapper">
+	<!-- 保存问题 -->
+	<insert id="saveSolution">
+		<selectKey keyColumn="s_id" keyProperty="sid" resultType="int" order="AFTER">
+			select @@identity as id
+		</selectKey>
+		insert into t_solution(q_id,u_id,time,content) 
+		values(#{questions.qid},#{user.uid},#{time},#{content})
+	</insert> 
+	<!-- 查询问题 -->
+	<select id="getSolution" resultType="Solution">
+		
+	 	select time,content from t_solution
+	 	where q_id=#{questions.qid}
+	</select>
+	<!-- 通过id删除问题 -->
+	<delete id="deleteSolution">
+		delete from t_solution
+		where s_id=#{sid} and u_id=#{user.uid}
+	</delete>
+</mapper>

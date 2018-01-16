@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>蓝色天边涂像空间</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="./css/reset.css">
+	<script src="./jquery/jquery.min.js"></script>
+	<script src="./js/fabuwenzhang.js"></script>
+	<link rel="stylesheet" href="css/xi_pb_article.css">
+	<link rel="stylesheet" type="text/css" href="./css/fabuwenzhang.css">
+	<style type="text/css">
+		#con textarea{
+		width: 90%;
+		height: 10rem;
+		font-size: 0.3rem;
+		padding: 0.1rem;
+	}
+	#con p{
+		font-size: 26px;
+		text-align: right;
+	}
+	#btn{
+		float: right;
+		height: 2.3rem;
+		line-height: 2.3rem;
+		font-size: 28px;
+		padding: 0.03rem 0.05rem;
+		background: green;
+		margin-top: 0.1rem;
+		cursor: pointer;
+	}
+	#ban{
+		overflow: hidden;
+	}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="top">
+			<div class="left">
+				<img src="img/fabu/btn_3_n@2x.png" alt="">
+			</div>
+			<div class="nav">
+				<input type="text" name="" value="搜索会员或关键字" id="ipt">	
+			</div>
+			<div class="right" >
+				<img src="img/fabu/btn_1_n@2x.png" alt="">
+			</div>
+		</div>
+		<div class="tit">
+			<div class="titouter">
+				<span class="select">发布文章</span>
+				<span>问题解答</span>
+				<span id="activity">组织活动</span>
+				<span id="sharell">分享活动</span>
+			</div>
+		</div>
+		<div class="conouter">
+			<div class="con">
+						#foreach($li in $articles)
+						<div class="con-left">
+							<div class="con-left1">
+								<img src=${li.illustrated} alt="无法加载图片" id="img1">
+								<div class="con-left1-foot"  u_id=${li.user.u_id} >
+									<img src=${li.user.headImg} alt="">
+									<p>${li.title}</p>
+									<span>${li.user.nickName}</span>
+								</div>
+							</div>
+						</div>
+						#end
+			</div>
+			
+			
+				<div id="con">
+					<h2>提出问题:</h2>
+					<textarea name="intro" id="txt_con" cols="20" rows="6" ></textarea>
+					<p>还可以输入<span id="number">120</span>字</p>
+					<a href="qqq" id="btn">确认发送</a>
+				</div>
+			<div class="con" >
+					
+					<ul id="list" class="show">
+				 					 		
+					</ul>	
+			</div>
+			<div class="con" >
+					<ul id="Alist" class="show">
+				 					 		
+					</ul>	
+					
+			</div>
+		</div>
+		
+		<div class="caidan" id="caidan">
+			
+				<img src="img/fabu/btn_7_n@2x.png" alt="" id="caidan1">
+				<img src="img/fabu/btn_6_n@2x.png" alt="" id="caidan2">
+				<img src="img/fabu/btn_5_n@2x.png" alt="" id="caidan3">
+				<img src="img/fabu/btn_4_n@2x.png" alt="" id="caidan4">
+			
+		</div>
+	</div>
+	<script>
+		function shareList(){
+			$.ajax({  
+              	url:'shareListNohis',  
+              	type:'post',  
+              	cache:false,  
+              	dataType:'json',  
+              	success:function(data) {  
+					$("#Alist").html("");
+					for(i=0;i<data.length;i++){
+						$("#Alist").append('<li class="inner_li">'
+						+'<div>'
+						+'<img src="'+data[i].user.headImg+'" alt="加载失败" class="inners_img">'
+						+'<p class="nick">'+data[i].user.nickName+'</p>'
+						+'</div>'
+						+'<div class="inners_box">'
+						+'<p>分享了活动：<span>'+data[i].activity.title+'</span></p>'
+						+'<div><a href="queryActivity?aid='+data[i].activity.aid+'" style="color:#008dcd;">查看活动内容</a></div>'
+						+'<p style="font-size:0.25rem;color:#666;">'+getLocalTime(new Date(data[i].time))+'</p>'
+						+'</div>'
+						+'</li>')
+					}
+              	}
+			})
+		}
+		$("#sharell").click(function(){
+			  shareList();
+		})
+		function getLocalTime(nS){
+			var year = nS.getYear()-100;
+			var month = nS.getMonth()+1;
+			var date = nS.getDate();
+			var hour = nS.getHours();
+			var minute = nS.getMinutes();
+			var second = nS.getSeconds();
+			return "20"+year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second;
+		}
+    </script>
+	<script>
+				function acList(){
+					$.ajax({  
+                      	url:'acListNohis',  
+                      	type:'post',  
+                      	cache:false,  
+                      	dataType:'json',  
+                      	success:function(data) {  
+							$("#list").html("");
+							for(i=0;i<data.length;i++){
+    							$("#list").append('<li class="inner_li">'
+									+'<img src="'+data[i].user.hPic+'" alt="加载失败" class="inner_img">'
+									+'<div class="inner_box">'
+									+'<p class="inner_money">活动名称：<span class="inner_title">'+data[i].title+'</span></p>'
+									+'<p class="inner_fabufang">'+data[i].information+'</p>'
+									+'<p class="inner_qiye">'+data[i].address+'</p>'
+									+'</div>'
+									+'<div class="inner_im"><a href="queryActivity?aid='+data[i].aid+'" style="color:#000">详情</a></div>'
+									+'</li>')
+    						}
+                      	}
+    				})
+				}
+    			$("#activity").click(function(){
+    				 acList(); 
+    			})
+				
+            </script>
+<script>
+	
+	$("#btn").click(function(){
+		var nowDate=new Date();
+		var year=nowDate.getFullYear();
+		var month=nowDate.getMonth()+1;
+		var day=nowDate.getDate();
+		var hour=nowDate.getHours();
+		var minu=nowDate.getMinutes();
+		if (month<10) {
+			month="0"+month;
+		}
+		if (day<10) {
+			day="0"+day;
+		}
+		if (hour<10) {
+			hour="0"+hour;
+		}
+		if (minu<10) {
+			minu="0"+minu;
+		}
+		var params={};
+		params.content=$("#txt_con").val();
+		params.date=nowDate;
+		$.ajax({  
+	        async:false,  
+	        type: "GET",  
+	        url: "save",//路径 
+	        data:params,  
+	        dataType:"json",
+	        success:function(data){   
+	            $(".nr").attr("id",data)
+	        },  
+	        error:function(data){  
+	            console.log(1);  
+	        }    
+	    });  		
+	})
+	function rem(){
+		var html=document.getElementsByTagName('html')[0];
+		var ww=document.documentElement.clientWidth;
+		var scale=ww/750;
+		html.style.fontSize=scale*100+"px";
+	}
+	rem();
+	window.onresize=function(){
+		rem();
+	}	
+</script>
+</body>
+</html>

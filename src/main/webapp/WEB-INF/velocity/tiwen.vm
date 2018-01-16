@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>标题</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<script src="jquery/jquery.min.js"></script>
+<style>
+	*{margin: 0;padding: 0;list-style: none;}
+	.outer{
+		width: 100%;
+		background: #ccc;
+		overflow: hidden;
+	}
+	#con textarea{
+		width: 80%;
+		height: 40rem;
+		font-size: 30px;
+		padding: 0.1rem;
+	}
+	#con p{
+		font-size: 26px;
+		text-align: right;
+	}
+	#btn{
+		float: right;
+		height: 2.3rem;
+		line-height: 2.3rem;
+		font-size: 28px;
+		padding: 0.03rem 0.05rem;
+		background: green;
+		margin-top: 0.1rem;
+		cursor: pointer;
+	}
+	#ban{
+		overflow: hidden;
+	}
+</style>
+</head>
+<body>
+	<div class="outer">
+		<div id="con">
+				<h2>提出问题:</h2>
+				<textarea name="" id="txt_con" cols="20" rows="20" ></textarea>
+				<p>还可以输入<span id="number">120</span>字</p>
+			</div>	
+			<a href="/bluesky/qqq" id="btn">确认发送</a>
+	</div>
+		
+</body>
+<script>
+	
+	$("#btn").click(function(){
+		var nowDate=new Date();
+		var year=nowDate.getFullYear();
+		var month=nowDate.getMonth()+1;
+		var day=nowDate.getDate();
+		var hour=nowDate.getHours();
+		var minu=nowDate.getMinutes();
+		if (month<10) {
+			month="0"+month;
+		}
+		if (day<10) {
+			day="0"+day;
+		}
+		if (hour<10) {
+			hour="0"+hour;
+		}
+		if (minu<10) {
+			minu="0"+minu;
+		}
+		var params={};
+		params.content=$("#txt_con").val();
+		params.date=nowDate;
+		$.ajax({  
+	        async:false,  
+	        type: "GET",  
+	        url: "save",//路径 
+	        data:params,  
+	        dataType:"json",
+	        success:function(data){   
+	            $(".nr").attr("id",data)
+	        },  
+	        error:function(data){  
+	            console.log(1);  
+	        }    
+	    });  		
+	})
+	function rem(){
+		var html=document.getElementsByTagName('html')[0];
+		var ww=document.documentElement.clientWidth;
+		var scale=ww/750;
+		html.style.fontSize=scale*100+"px";
+	}
+	rem();
+	window.onresize=function(){
+		rem();
+	}	
+</script>
+</html>

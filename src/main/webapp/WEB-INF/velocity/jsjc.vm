@@ -1,0 +1,60 @@
+\<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>蓝色天边涂像空间</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/jsjc.css">
+	<script src="jquery/jquery.min.js"></script>
+	<script src="js/jsjc.js"></script>
+</head>
+<body>
+	<div class="outer">
+		<div class="top">
+			<div class="left">
+				<img src="img/fabu/btn_3_n@2x.png" alt="">
+			</div>
+			<div class="nav">
+				<input type="text" name="" value="搜索会员或关键字">	
+			</div>
+			<div class="right">
+				<img src="img/fabu/btn_1_n@2x.png" alt="">
+			</div>
+		</div>
+		<div class="tit">
+			<div class="titouter">
+				<span class="select">摄影展示</span>
+				<span>设计作品</span>
+				<span>技术教程</span>
+				<span>会员展示</span>
+			</div>
+		</div>
+		<ul class="foot">
+		
+				
+			#foreach (1 in 1)
+    			<li>
+				<img src="img/gongdan/img_1@2x.png" alt="">
+				<div class="foot1">
+					<p class="jieshao">技术教程</p>
+					<p>2017-12-12</p>
+					<p>收藏</p>
+				</div>				
+			</li>	
+  			 #end
+		</ul>
+		<div class="caidan" id="caidan">
+			
+				<img src="img/fabu/btn_7_n@2x.png" alt="" id="caidan1">
+				<img src="img/fabu/btn_6_n@2x.png" alt="" id="caidan2">
+				<img src="img/fabu/btn_5_n@2x.png" alt="" id="caidan3">
+				<img src="img/fabu/btn_4_n@2x.png" alt="" id="caidan4">
+			
+		</div>
+	</div>
+
+</body>
+</html>

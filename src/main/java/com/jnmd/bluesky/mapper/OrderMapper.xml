@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnmd.bluesky.mapper.OrderMapper">
+
+	<resultMap type="Order" id="ordersMap" autoMapping="true">
+			<id column="o_id" property="o_id"></id>
+			<association property="user" javaType="User" autoMapping="true">
+				<id column="u_id" property="u_id"></id>
+			</association>
+	</resultMap>
+	<select id="getOrders" resultMap="ordersMap">
+		select o.o_id,o.title,o.money,o.time,u.u_id,u.hPic,u.pNum
+		from t_order as o left join t_user as u
+		on o.u_id = u.u_id
+	</select>
+	
+	
+	<resultMap type="Order" id="orderMap" autoMapping="true">
+			<id column="o_id" property="o_id"></id>
+			
+			<association property="user" javaType="User" autoMapping="true">
+				<id column="u_id" property="u_id"></id>
+			</association>
+			<association property="t_type" javaType="T_type" autoMapping="true">
+				<id column="ty_id" property="ty_id"></id>
+			</association>
+	</resultMap>
+	
+	<select id="getOrder" resultMap="orderMap">
+		select o.o_id,o.orderCode,o.money,o.title,o.time,o.intro,u.u_id,u.pNum,u.hPic,u.nickName,t.ty_id,t.category
+		from t_order o 
+		left join t_user u
+		on o.u_id = u.u_id
+		left join t_type t
+		on o.ty_id = t.ty_id
+		where
+		o.o_id = #{o_id}
+	</select>
+	
+	
+	<select id="getOrderByType" resultMap="orderMap">
+		select o.o_id,o.title,o.money,o.time,u.u_id,u.hPic,u.pNum,t.ty_id,t.category
+		from t_order o
+		left join t_user u
+		on o.u_id = u.u_id
+		left join t_type t
+		on o.ty_id = t.ty_id
+		where
+		t.ty_id = #{ty_id}
+	</select>
+	
+	
+	<insert id="insertOrder">
+		<selectKey keyColumn="o_id" keyProperty="o_id" order="AFTER" resultType="int">
+			select @@identity as id	
+		</selectKey>
+		insert into t_order(orderCode,u_id,title,ty_id,money,time,intro)
+		values(#{orderCode},#{u_id},#{title},#{ty_id},#{money},#{time},#{intro})
+	</insert>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

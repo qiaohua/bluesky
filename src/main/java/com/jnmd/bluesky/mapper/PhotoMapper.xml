@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnmd.bluesky.mapper.PhotoMapper">
+	<!-- 多表连接 一对多查新  返回自定义类型对象 -->
+	<resultMap type="Photobook" id="photoMap" autoMapping="true">
+		
+			<!-- 指定对象对应表中的主键
+			column:　指定表中的列名
+			property:　指定对象的属性名 -->
+		
+		<id column="pb_id" property="pb_id"/>
+		<result column="url" property="url"/>
+		<!-- 指定对象中的属性与表字段映射 -->
+		<!-- 所有需要的字段都需要声明，主键必须声明 -->
+		<collection property="imgs" javaType="arraylist" ofType="Picture">
+			<id column="p_id" property="p_id" />
+			<result column="img_name" property="img_name"/>
+			
+		</collection> 
+	</resultMap>
+	<select id="getPhoto" resultMap="photoMap">
+		<!-- select t_photobook.url,t_picture.name
+		from t_photobook inner join t_picture on t_photobook.pb_id = t_picture.pb_id
+		where t_photobook.u_id = #{t_photobook.u_id} -->
+		select p.pb_id, p.url, p.title, p.u_id, c.img_name
+		from t_photobook p
+		left join t_picture c
+		on p.pb_id = c.pb_id
+		where p.u_id = #{u_id}
+		<!-- and t_photobook.pb_id=t_picture.pb_id -->
+		<!-- select url from t_photobook photobook  -->
+	</select> 
+	<!-- <select id="getPhoto" resultType="String">
+		select t_photobook.url,t_picture.name
+		from t_photobook inner join t_picture on t_photobook.pb_id = t_picture.pb_id
+		where t_photobook.u_id = #{t_photobook.u_id}
+		select url from t_photobook photobook 
+	</select> -->
+	
+	<!-- 测试代码
+	 -->
+	<select id="getPhotosTest" resultType="Photobook">
+		
+		 select p.pb_id, p.url, p.title, p.u_id, c.img_name
+		from t_photobook p
+		left join t_picture c
+		on p.pb_id = c.pb_id
+		where p.u_id = #{u_id} 
+		
+		<!-- select p.*,c.*
+		from t_photobook p inner join t_picture c 
+		on p.pb_id = c.pb_id
+		where p.u_id = #{t_photobook.u_id} --> 
+		<!-- select url from t_photobook photobook  -->
+	</select>
+	
+	
+</mapper>
+	

@@ -1,0 +1,170 @@
+		html{
+			font-size: 100px;
+		}
+		.outer{
+			margin: 0 auto;
+			width: 7.5rem;
+		}
+		.top{
+			overflow: hidden;
+			height: 0.88rem;
+			background: url(../img/fabu/bg_1@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+		}
+		.left{
+			height: 0.88rem ;
+			float: left;
+			margin-left: 0.2rem;
+			margin-right: 0.36rem;
+		}
+		.left img{
+			margin-top: 0.24rem;
+			width: 0.24rem;
+			height: 0.41rem;
+		}
+		.nav{
+			float: left;
+			margin-top: 0.16rem;
+			width: 5.66rem;
+			height: 0.54rem;
+			background: url(../img/fabu/img_6@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+		}
+		.nav input{
+			border: none;
+			border-radius:0.3rem ;
+			padding-left: 1.8rem;
+			width: 3.87rem;
+			height: 0.54rem;
+			font-size: 0.24rem;
+			color: #aaa;
+			background: url(../img/fabu/img_7@2x.png) 1.49rem center no-repeat;
+			background-size: 0.26rem 0.24rem;
+		}
+		.right{
+			float: left;
+			width:0.54rem ;
+			height:0.54rem ;
+			margin-left:0.24rem ;
+			margin-top:0.16rem ;
+		}
+		.right img{
+			width:0.54rem ;
+			height:0.54rem ;
+		}
+		.tit{
+			overflow: hidden;
+			padding:0 0.34rem;
+			height: 0.88rem;
+			background: url(../img/fabu/bg_2@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+		}
+		.titouter{
+			width: 8rem;
+			height: 0.88rem;
+			overflow: hidden;
+		}
+		.titouter span{
+			padding:0.2rem 0 ;
+			float: left;
+			margin-right: 0.44rem;
+			font-size: 0.34rem;
+			
+		}
+		.select{
+			color: #008ccf;
+			border-bottom:0.02rem solid #008ccf;
+		}
+		.conouter{
+			width: 7.5rem;
+			position: relative;
+		}
+		.con{
+			width: 7.1rem ;
+			position: absolute;
+			top: 0;
+			left: 0;
+			overflow: hidden;
+			padding: 0.2rem ;
+			background: #efefef;
+			display: none;
+		}
+		.conouter .show{
+			display: block;
+		}
+		.con-left{
+			float: left;
+			width: 3.45rem;
+
+		}
+		.con-left1{
+			float: left;
+			background: white;
+			margin-bottom: 0.2rem;
+		}
+		
+		#img1{
+			width: 3.45rem;
+			height: 1.94rem;
+		}
+		.tupianx{
+			width:5rem;
+			height:5rem;
+		}
+		.con-left1-foot{
+			padding-bottom: 0.15rem;
+			overflow: hidden;
+		}
+		.con-left1-foot img{
+			margin: 0.17rem 0.09rem 0rem 0.15rem;
+			width:0.65rem ;
+			height:0.65rem ;
+			float: left;
+		}
+		.con-left1-foot p{
+			
+			margin-top: 0.18rem;
+			margin-bottom:0.03rem;
+			font-size:0.22rem ;
+			color: #373737;
+		}
+		.con-left1-foot span{
+			
+			font-size:0.21rem ;
+			color: #aaa;
+		}
+		#img2{
+			width: 3.45rem;
+			height: 1.95rem;
+		}
+		.con-right{
+			float: right;
+			width: 3.45rem;
+		}
+		#img3{
+			width:3.45rem ;
+			height: 5rem;
+		}
+		#img4{
+			width:3.45rem ;
+			height: 3.8rem;
+		}
+		.caidan{
+			width: 0.9rem;
+			height: 0.9rem;
+			position: fixed;
+			left: 0.2rem;
+			bottom: 0.3rem;
+			background: url(../img/fabu/btn_2_n@2x.png)0 0 no-repeat;
+			background-size:100% 100% ;
+
+		}
+		.caidan img{
+			display: none;
+			width: 0.6rem;
+			height: 0.6rem;
+			position: absolute;
+			left: 0.15rem;
+			top: 0.15rem;
+			
+		}

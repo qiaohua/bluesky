@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnmd.bluesky.mapper.SaveImg">
+	<insert id="savephoto">
+	<!-- 保存并返回该对象的主键 -->
+		<selectKey keyColumn="pb_id" keyProperty="pb_id" order="AFTER" resultType="int">
+			select @@identity as pb_id
+		</selectKey>
+		insert into t_photobook 
+		(title, url, u_id) values(#{title},#{url},#{u_id})
+		
+	</insert>
+	<insert id="savepicture">
+		insert into t_picture(img_name,pb_id,ispublic) 
+		values(#{img_name},#{pb_id},#{ispublic})
+	</insert>
+	
+	
+</mapper>
+	

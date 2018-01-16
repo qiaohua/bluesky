@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jnmd.bluesky.mapper.TechnologyMapper">
+
+
+<resultMap type="Technology" id="t_t" autoMapping="true">  
+    <id property="te_id" column="te_id"/>  
+    <result property="te_id" column="te_id"/>  
+    <association property="user" javaType="User">  
+        <id property="u_id" column="u_id"/>  
+        <result property="address" column="address"/>  
+    </association>  
+</resultMap>
+
+	<select id="AllTec" resultMap="t_t" >
+		select te_id,title,
+		content,u_id, time,amount
+		from t_technology
+	</select>
+
+
+	<insert id="insertT">
+		insert into t_technology(title, content,u_id)
+		values(#{title},#{content},#{user.u_id})
+	</insert>
+</mapper>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>蓝色天边涂像空间</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/denglu.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/denlu.js"></script>
+</head>
+<body>
+	<div class="outer">
+		<div class="head">
+			登录
+			<div id="hui"></div>
+		</div>
+		<div class="tu"></div>
+		<div class="con">
+			<form method="" action="denglu" id="frm">
+				<div class="con_top">
+					<input type="text" id="ip1" name="mphone" value="请输入您的手机号">
+				</div>
+				<div class="con_bot">
+					<input type="text" id="ip2" name="" value="短信验证码">
+					<div id="yanz">获取验证码</div>
+				</div>
+				<div id="denglu">
+					登录
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

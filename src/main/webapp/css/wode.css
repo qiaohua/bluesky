@@ -1,0 +1,249 @@
+		html{
+			font-size: 100px;
+		}
+		.head{
+			width: 7.5rem;
+			height: 3.51rem;
+			background: url("../img/wodekongjian/img_6@2x.png") 0 0 no-repeat;
+			background-size: 100%;
+		}
+		.top{
+			width: 100%;
+			height: 0.88rem;
+			position: relative;
+			text-align: center;
+			line-height: 0.88rem;
+		}
+		.top .back{
+			display: inline-block;
+			width: 0.24rem;
+			height: 0.41rem;
+			background:url("../img/gongdan/btn_1_n@2x.png") 0 0 no-repeat;
+			background-size: 100%;
+			position: absolute;
+			top:0.19rem;
+			left: 0.3rem;
+		}
+		.top span{
+			font-size: 0.34rem;
+			color: white;
+		}
+		.top .select{
+			display: inline-block;
+			width: 0.32rem;
+			height: 0.31rem;
+			background:url("../img/wodekongjian/btn_11_n@2x.png") 0 0 no-repeat;
+			background-size: 100%;
+			position: absolute;
+			top:0.25rem;
+			right: 0.3rem;
+		}
+		.top .show{
+			width: 1.69rem;
+			height: 1.26rem;
+			background: url("../img/wodekongjian/img_2@2x.png") 0 0 no-repeat;
+			background-size: 100%;
+			position:absolute;
+			top: 0.3rem;
+			right: -0.02rem;
+			text-align: center;
+			display: none;
+		}
+		.show p{
+			width: 1.4rem;
+			height: 0.63rem;
+			font-size: 0.26rem;
+			color: white;
+			line-height: 0.63rem;
+			margin: 0 auto;
+		}
+		.go{
+			border-bottom: 1px solid #787473 ; 
+		}
+		.center{
+			width: 1.69rem;
+			height: 1.69rem;
+			border-radius: 50%;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		.center img{
+			width: 100%;
+			height: 100%;
+		}
+		.jieshao{
+			height: 0.76rem;
+			text-align: center;
+			line-height: 0.76rem;
+			font-size: 0.26rem;
+		}
+		.jieshao i{
+			display: inline-block;
+			width: 0.06rem;
+			height: 0.06rem;
+			background:  url("../img/wodekongjian/img_8@2x.png") 0 0 no-repeat;
+			margin: 0.05rem 0.1rem;
+		}
+		.beijing{
+			width: 100%;
+			height: 0.2rem;
+			background: #f0f0f0;
+		}
+		.nav{
+			width: 7.5rem;
+		}
+		.nav span{
+			height: 1.1rem;
+			display: inline-block;
+			width: 23%;
+			text-align: center;
+			line-height: 1.1rem;
+			font-size:0.26rem;
+			color: #373737; 
+		}
+		.shoucang{
+			background: url("../img/wodekongjian/btn_12_n@2x.png") 0.2rem center no-repeat;
+			background-size: 0.28rem 0.27rem;
+		}
+		.xiangce{
+			background: url("../img/wodekongjian/btn_13_n@2x.png") 0.2rem center no-repeat;
+			background-size: 0.28rem 0.23rem;
+		}
+		.jilu{
+			background: url("../img/wodekongjian/btn_14_n@2x.png") 0.2rem center no-repeat;
+			background-size: 0.21rem 0.26rem;
+		}
+		.gonglue{
+			background: url("../img/wodekongjian/btn_15_n@2x.png") 0.2rem center no-repeat;
+			background-size: 0.20rem 0.24rem;
+		}
+		.dongtai{
+			width: 7.3rem;
+			height: 0.5rem;
+			font-size: 0.26rem;
+			color: #373737;
+			background: #f0f0f0;
+			line-height: 0.5rem;
+			padding-left: 0.2rem
+		}
+		.say{
+			width: 100%;
+			height: 1.2rem;
+			border-bottom: 1px solid #f0f0f0;
+			background: url("../img/wodekongjian/img_7@2x.png") 0.24rem center no-repeat;
+			background-size: 0.57rem 0.57rem;
+			padding-top: 0.5rem;
+		}
+		.shuru{
+			display:block;
+			width: 5.02rem;
+			height: 0.5rem;
+			background: url("../img/wodekongjian/btn_8_n@2x.png") 0 0 no-repeat;
+			background-size: 100% 100%;	
+			margin: 0 auto;
+			margin-top: 0.1rem;
+		}
+		.shuru input{
+			width: 4.4rem;
+			height: 0.45rem;
+			border: none;
+			background: #727270;
+			margin-left: 0.3rem;
+			font-size: 0.26rem;
+			color: white;
+		}
+		.con li{
+			width: 100%;
+			height: 3.77rem;
+		}
+		.title{
+			width: 84%;
+			height: 0.57rem;
+			background: url("../img/wodekongjian/img_7@2x.png") 0.24rem 0 no-repeat;
+			background-size: 0.57rem 0.57rem;
+			font-size: 0.26rem;
+			color: #373737;
+			padding-left: 1rem;
+			position: relative;
+			line-height: 0.57rem;
+		}
+		.title span{
+			position: absolute;
+			top: 0rem;
+			right:1rem;
+		}
+		.neirong{
+			width: 6.1rem;
+			height: 2rem;
+			background: url("../img/wodekongjian/fabu1.jpg") 0 0 no-repeat;
+			background-size:3.97rem 2rem;
+			margin-left: 1rem;
+			margin-top: 0.1rem;
+		}
+		.zi{
+			display: inline-block;
+			height: 2rem;
+			width: 3.03rem;
+			font-size: 0.26rem;
+			color: #373737;
+			float: right;
+			background: #f6f6f6;
+		}
+		.zi a{
+			display: inline-block;;
+			width: 2.27rem;
+			height: 1.57rem;
+			overflow: hidden;
+			margin-left: 0.28rem;
+			margin-top: 0.24rem;
+		}
+		.na-v li:nth-child(1){
+			width: 0.9rem;
+			height: 0.9rem;
+			background: url("../img/gongdan/btn_3_n@2x .png") 0 0 no-repeat;
+			background-size: 100%;
+			position: fixed;
+			bottom: 0.1rem;
+			left:  0.1rem;
+			z-index: 1;
+		}
+		.na-v li:nth-child(2){
+			width: 0.6rem;
+			height: 0.6rem;
+			background: url("../img/gongdan/btn_7_n@2x .png") 0 0 no-repeat;
+			background-size: 100%;
+			position: fixed;
+			bottom: 1.73rem;
+			left: 0.23rem;
+			display: none;	
+		}
+		.na-v li:nth-child(3){
+			width: 0.6rem;
+			height: 0.6rem;
+			background: url("../img/gongdan/btn_5_n@2x.png") 0 0 no-repeat;
+			background-size: 100%;
+			position: fixed;
+			bottom: 1.4rem;
+			left: 0.9rem;
+			display: none;
+		}
+		.na-v li:nth-child(4){
+			width: 0.6rem;
+			height: 0.6rem;
+			background: url("../img/gongdan/btn_6_n@2x.png") 0 0 no-repeat;
+			background-size: 100%;
+			position: fixed;
+			bottom: 0.9rem;
+			left: 1.5rem;
+			display: none;
+		}
+		.na-v li:nth-child(5){
+			width: 0.6rem;
+			height: 0.6rem;
+			background: url("../img/gongdan/btn_4_n@2x.png") 0 0 no-repeat;
+			background-size: 100%;
+			position: fixed;
+			bottom: 0.23rem;
+			left: 1.73rem;
+			display: none;
+		}

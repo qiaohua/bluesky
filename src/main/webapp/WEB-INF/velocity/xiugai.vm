@@ -1,0 +1,292 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>蓝色天边涂像空间</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="stylesheet" href="./css/reset.css">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+	<script src="./js/jquery-1.8.3.min.js"></script>
+	<style>
+		html{
+			font-size: 100px;
+			height: 100%;
+		}
+		body{
+			height: 100%;
+			background: #f0f0f0;
+		}
+		.outer{
+			width: 7.5rem;
+		}
+		.head{
+			width: 7.5rem;
+			height: 0.88rem;
+			text-align: center;
+			font-size: 0.34rem;
+			color: #fff;
+			line-height: 0.88rem;
+			background: url(./img/denglu/bg_1@2x.png) 0 0 no-repeat;
+			background-size: 100%;
+			position: relative;
+		}
+		#hui{
+			width: 0.24rem;
+			height: 0.41rem;
+			background: url(./img/denglu/btn_3_n@2x.png) 0 0 no-repeat;
+			background-size: 100%;
+			position: absolute;
+			left: 0.2rem;
+			top: 0.23rem;
+		}
+		#xiugai{
+			float: right;
+			margin-right: 0.2rem;
+		}
+		ul{
+			width: 7.5rem;
+			background: #fff;
+		}
+		ul li{
+			width: 7.3rem;
+			color: #373737;
+			font-size: 0.26rem;
+			border-top: 0.01rem solid #ccc;
+			padding-left: 0.2rem;
+			overflow: hidden;
+		}
+		 li:nth-child(1){
+		 	position: relative;
+			height: 2rem;
+			line-height: 2rem;
+			border: none;
+		} 
+		.touxiang{
+			width: 1.1rem;
+			height: 1.1rem;
+			margin-top: 0.45rem;
+			float: right;
+			overflow: hidden;
+		}
+		.touxiang img{
+			width: 1.1rem;
+			height: 1.1rem;
+			float: right;
+			border-radius: 50%;
+		}
+		
+		li:not(.tx){
+			height: 0.86rem;
+			line-height: 0.86rem;
+		}
+		li input:not(#btn){
+			width: 2rem;
+			float: right;
+			font-size: 0.26rem;
+			color: #9a9a9a;
+			margin-top: 0.3rem;
+			margin-right: 0.4rem;
+			text-align: right;
+			border: none;
+			background-color: transparent;
+		}
+		.sex{
+			width: 1rem;
+			float: right;
+			font-size: 0.26rem;
+			color: #9a9a9a;
+			margin-top: 0.3rem;
+			margin-right: 0.4rem;
+			text-align: right;
+			border: none;
+			background-color: transparent;
+		}
+		.cityList{
+			
+			float: right;
+			font-size: 0.26rem;
+			color: #9a9a9a;
+			
+			text-align: right;
+			border: none;
+			background-color: transparent;
+		}
+		.update{
+			background: #fff;
+			text-align: center;
+			border-top: 0.01rem solid #ccc;
+		}
+
+		.sbmt{
+			margin: 0.2rem ;
+			padding: 0.1rem  0.2rem;
+			font-size: 0.26rem;
+			border: 1px solid #9a9a9a;
+			
+			background-color: transparent;
+		}
+		#sheng{
+			width: 1rem;
+			
+			font-size: 0.26rem;
+			color: #9a9a9a;
+			margin-top: 0.3rem;
+			margin-right: 0.4rem;
+			text-align: right;
+			border: none;
+			background-color: transparent;
+		}
+		#shi{
+			width: 1rem;
+			
+			font-size: 0.26rem;
+			color: #9a9a9a;
+			margin-top: 0.3rem;
+			margin-right: 0.4rem;
+			text-align: right;
+			border: none;
+			background-color: transparent;
+		}
+
+		#btn{
+			font-size: 0.14rem;
+			width: 0.8rem;
+			position: absolute;
+			top:1.7rem ;
+			right:0.2rem ;
+			height: 0.2rem;
+			border: none;
+			border-radius: 10%;
+		}
+		#imgUpload{
+  			display: none;
+  		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="head">
+			个人信息
+			<div id="hui"></div>
+		</div>
+
+		<form action="updateUser" method="post" enctype="multipart/form-data">
+
+			<ul>
+
+				<li class="tx">
+				头像
+				<div class="touxiang">
+					<img src="./headImg/${user.headImg}" alt="" id="uploadhead">
+					
+				</div>
+				<input type="file" name="file" id="imgUpload" accept="image/*"> 
+				<input type="button" value="上传头像" id="btn"/>
+				</li>
+				<li>
+					昵称
+					<input type="text" name="nickName" value="${user.nickName}">
+				</li>
+				<li>
+					#set($sexs=["男" , "女" , "保密"])
+					#set($nums=[0 , 1 , 2])
+					性别
+					<select name="sex" class="sex">
+
+				        <option value="1">男</option>
+				        <option value="2">女</option>
+				        <option value="0">保密</option>
+	    			</select>
+				</li>
+				<li>
+					年龄
+					<input type="text" name="age" value="${user.age}">
+				</li>
+
+				<li>
+					城市
+					<div class="cityList">
+						<label for="sheng">省份：</label>
+						<select id="sheng">
+							<option value="-1">请选择</option>
+						</select>
+						<label for="shi">城市：</label>
+						<select id="shi" name="shi">
+							<option value="-1" >请选择</option>
+						</select>
+					</div>
+				</li>
+			</ul>
+			<div class="update">
+				<input type="submit" value="保存" class="sbmt">
+			</div>
+		</form>
+	</div>
+
+	<script type="text/javascript" src="js/citylist.js"></script>
+	<script>
+		function rem(){
+			var html=document.getElementsByTagName('html')[0];
+			var ww=document.documentElement.clientWidth;
+			var scale=ww/750;
+			html.style.fontSize=scale*100+"px";
+		}
+		rem();
+		window.onresize=function(){
+			rem();
+		}
+
+
+
+		var sheng=document.getElementById('sheng');
+		var shi=document.getElementById('shi');
+		
+		console.log(json.citylist[0].p);//北京  获取示例
+		console.log(json.citylist[0].c[0].n)//东城区  获取示例
+		console.log(json.citylist.length);//35  获取示例
+		var opt1='<option value="-1">请选择</option>';
+		for (var i = 0; i <json.citylist.length; i++) {//省份初始值
+			opt1=opt1+'<option value="'+i+'">'+json.citylist[i].p+'</option>';
+			sheng.innerHTML=opt1;
+		}
+		sheng.onchange=function (){//选择省份后
+			var opt2='<option value="-1">请选择</option>';//初始值
+			shi.innerHTML=opt2;
+			if(sheng.value!=-1){
+
+				if (json.citylist[sheng.value].c[0].a) {//是省份执行这
+					for (var i = 0; i <json.citylist[sheng.value].c.length; i++) { 
+						opt2=opt2+'<option value="'+json.citylist[sheng.value].c[i].n+'">'+json.citylist[sheng.value].c[i].n+'</option>';
+						shi.innerHTML=opt2;
+					}
+				} else{//是直辖市执行这
+					opt2=opt2+'<option value="'+json.citylist[sheng.value].p+'">'+json.citylist[sheng.value].p+'</option>';
+					shi.innerHTML=opt2;
+				};
+			}
+		}
+
+		$("#btn").click(function(){
+   
+              $("#imgUpload").click();
+        })
+
+
+        $("#imgUpload").change(function(e) {  
+            for (var i = 0; i < e.target.files.length; i++) {  
+            var file = e.target.files.item(i);            
+            var freader = new FileReader();  
+            freader.readAsDataURL(file);  
+            freader.onload = function(e) {  
+              var src = e.target.result;  
+              $("#uploadhead").attr("src",src);  
+            }  
+          }  
+        });  
+
+	</script>
+
+</body>
+</html>

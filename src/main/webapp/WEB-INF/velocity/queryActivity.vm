@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>标题</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/queryActivity.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/queryActivity.js"></script>
+</head>
+<body>
+	<div class="outer">
+		<div class="head">
+			活动详情
+			<div id="hui"></div>
+			<div id="nve"><a href="javascript:share($!{user.uid},$!{activity.aid})">分享</a></div>
+		</div>
+        <script>
+			function share(uid,aid){
+				$.ajax({  
+                  	url:'shareNohis?uid='+uid+'&aid='+aid,  
+                  	type:'post',  
+                  	cache:false,  
+                  	dataType:'json',  
+                  	success:function(data) {  
+						if(data==1){
+							alert("您已分享过该活动")
+						}else{
+							alert("分享成功")
+						}
+                  	}
+				})  
+			}
+		</script>
+	</div>
+    <h2>$!{activity.title}</h2>
+	<div class="content">
+		<div>
+			<span>组织者：$!{activity.user.nickName}</span>
+			<br/>
+            <span class="time">活动时间：$!date.format("yyyy-MM-dd",$!{activity.start})至$!date.format("yyyy-MM-dd",$!{activity.end})</span>
+		</div>
+        <div>
+			<p>活动描述：$!{activity.information}</p>
+            <h3>主要内容</h3>
+			<div class="cont">$!{activity.content}</div>
+            <p class="name">
+				已有 
+				#foreach($u in $!{userList})
+                    <span>&nbsp;$!{u.user.nickName}</span>
+				#end
+				...	<span>$!{count}</span>人已经参加
+			</p>
+		</div>
+		
+	</div>
+	
+	
+	#if( $!session.getAttirbute("user").equals(null))
+		<div class="come comeno">登陆后可点击参与</div>
+	#else
+		
+		#set($b=0)
+		#foreach($in in $!{users})
+			#if(${user.uid}==$!{in.user.uid})
+				#set($b=1)
+			#end	
+		#end
+		#if($b==0)
+    		<div class="come" id="comeIn">
+				<a href="/bluesky/addAcUserNohis?aid=${activity.aid}&uid=${user.uid}">点击参与</a>
+			</div>
+		#elseif($b==1)
+			<div class="come" id="comeqx">
+				<a href="/bluesky/delAcUserNohis?aid=${activity.aid}&uid=${user.uid}">点击取消活动</a>
+			</div>
+		#end	
+	#end
+	
+	
+</body>
+</html>

@@ -1,0 +1,152 @@
+html{
+			font-size: 100px;
+		}
+		.outer{
+			margin: 0 auto;
+			width: 7.5rem;
+		}
+		.con1{
+			padding-top:0.2rem ;
+			height: 3.51rem;
+			background: url(../img/dianjitouxiang/img_6@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+		}
+		.con1-top{
+			text-align: center;
+			overflow: hidden;
+			height: 0.41rem;
+		}
+		.con1-top-left{
+			width: 0.45rem;
+			height: 0.41rem;
+			margin-left: 0.2rem;
+			float: left;
+			background: url(../img/dianjitouxiang/btn_1_n@2x.png) 0 0 no-repeat;
+			background-size: 0.24rem 100%;
+		}
+		.con1-top span{
+			font-size: 0.3rem;
+			color: white;
+			letter-spacing: 0.02rem;
+		}
+		.con1-top-right{
+			width: 0.45rem;
+			height: 0.41rem;
+			margin-right: 0.2rem;
+			float: right;
+			background: url(../img/dianjitouxiang/btn_8_n@2x.png) 0 0 no-repeat;
+			background-size: 100% 100%;
+		}
+		.con1-center{
+			width: 1.69rem;
+			height: 1.69rem;
+			margin: 0.4rem auto;
+			background: url(../img/dianjitouxiang/img_5@2x.png) 0 0 no-repeat;
+			background-size: 100% 100%;
+		}
+		.con1-foot{
+			height: 0.4rem;
+			text-align: center;
+		}
+		.con1-foot span{
+			height: 0.4rem;
+			line-height: 0.4rem;
+			font-size: 0.26rem;
+			color: #373737;
+		}
+		.con1-foot i{
+			display: inline-block;
+			height:0.12rem;
+			width: 0.06rem;
+			background: url(../img/dianjitouxiang/img_8@2x.png) 0 0 no-repeat;
+			background-size: 0.06rem 0.06rem; 
+		}
+		.outercon2{
+			position: relative;
+			height: 1.73rem;
+		}
+		.con2{
+			overflow:hidden;
+			height: 1.73rem;
+			
+			background: url(../img/dianjitouxiang/meng.png) repeat;
+		}
+		.con2outer{
+			overflow: hidden;
+			height: 1.73rem;
+			/* width:100rem;	 */
+		}
+		.con2outer img{
+			float: left;
+			height: 1.73rem;
+		}
+		
+		.con2outer span{
+			position: absolute;
+			top: 0.14rem;
+			left: 0.24rem;
+			color: white;
+			font-size: 0.48rem;
+		}
+		.con3{
+			height:0.52rem ;
+			background:#f0f0f0 ;
+		}
+		.con3 span{
+			font-size:0.26rem ;
+			margin-left: 0.16rem;
+			line-height: 0.52rem;
+			color: #373737;
+		}
+		.con4{
+			width: 7.5rem;
+			height:100%;
+		}
+		.con4-top1{
+			padding:0.39rem 0.46rem 0.24rem 0.93rem ;
+			background: url(../img/dianjitouxiang/img_7@2x.png) 0.2rem 0.24rem no-repeat;
+			background-size: 0.57rem 0.57rem;
+			border-bottom: 0.02rem solid #f0f0f0; 
+			float:left;
+		}
+		.con4-top1-top{
+			height: 0.32rem;
+			margin-bottom: 0.28rem;
+		}
+		.con4-top1-top p{
+			line-height: 0.32rem;
+			float: left;
+			font-size: 0.26rem;
+			color: #373737;
+		}
+		.con4-top1-top span{
+			line-height: 0.32rem;
+			float: right;
+			font-size: 0.2rem;
+			color: #b4b4b4;
+			
+		}
+		.con4-top1-center{
+			overflow: hidden;
+			background: #f6f6f6;
+		}
+		.con4-top1-center img{
+			float: left;
+			width: 3.1rem;
+			height: 2rem;
+		}
+		.con4-top1-center p{
+			width: 2.32rem;
+			float: left;
+			font-size: 0.24rem;
+			color: #373737;
+			padding:0.24rem 0.34rem ;
+		}
+		.con4-top1-foot{
+			margin-top: 0.28rem;
+		}
+		.con4-top1-foot img{
+			margin-right: 0.36rem;
+			width: 0.24rem;
+			height: 0.24rem;
+		}

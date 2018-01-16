@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jnmd.bluesky.mapper.HistoryMapper">
+	<select id="getList" resultType="History">
+		select hi_id,url,title,time,u_id 
+		from t_history
+		ORDER BY hi_id DESC
+		<!-- WHERE u_id=#{uid} -->
+		LIMIT 20
+	</select>
+	<insert id="saveHistory">
+		insert into t_history(url,title,time,u_id) 
+		values(#{url},#{title},#{time},#{u_id})
+	</insert>
+	
+	<delete id="delHistory">
+		DELETE FROM t_history
+		WHERE time &lt; #{time2}
+	</delete>
+	
+	<delete id="delById">
+		DELETE FROM t_history
+		WHERE hi_id=#{hid}
+	</delete>
+	
+	<delete id="delHistoryAll">
+		DELETE FROM t_history
+		WHERE u_id=#{uid}
+	</delete>
+</mapper>	

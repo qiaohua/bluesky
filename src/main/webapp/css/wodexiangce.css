@@ -1,0 +1,61 @@
+		html{
+			font-size: 100px;
+		}
+		.outer{
+			margin: 0 auto;
+			width: 7.5rem;
+			/* background: #f0f0f0; */
+		}
+		.top{
+			text-align: center;
+			overflow: hidden;
+			height: 0.66rem;
+			padding-top: 0.22rem;
+			background: url(../img/wodexiangce/bg_1@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+		}
+		.top-left{
+			width: 0.45rem;
+			height: 0.41rem;
+			margin-left: 0.2rem;
+			float: left;
+			background: url(../img/wodexiangce/btn_1_n@2x.png) 0 0 no-repeat;
+			background-size: 0.24rem 100%;
+		}
+		.top-right{
+			width: 0.45rem;
+			height: 0.41rem;
+			margin-right: 0.2rem;
+			float: right;
+			/* background: url(./img/xiangxiNR/btn_3_n@2x.png) 0 0 no-repeat;
+			background-size: 100% 100%; */
+		}
+		.top span{
+			font-size: 0.3rem;
+			color: white;
+			letter-spacing: 0.02rem;
+		}
+		.con img{
+			float: left;
+			height: 2.5rem;
+			width: 2.5rem;
+		}
+		ul{
+			display:inline-block;
+		}
+		li{
+			margin-top:0.2rem;
+			width: 1.5rem;
+			height: 1.5rem;
+			display: inline-block;
+			margin-left: 0.2rem;
+		}
+		#jia{
+			background: url(../img/denglu/fabu1.png) 0 0 no-repeat;
+			background-size: 100%;
+		}
+		#ip3{
+			/* display: none; */
+			z-index:-1;
+			border:0 solid #fff;
+		}

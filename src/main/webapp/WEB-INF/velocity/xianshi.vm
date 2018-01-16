@@ -1,0 +1,317 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>标题</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<script src="jquery/jquery.min.js"></script>
+	<style>
+		html{font-size: 100rem}
+		*{margin: 0;padding: 0;list-style: none;}
+		.outer{
+			width: 100%;
+			background: #ccc;
+			overflow: hidden;
+			position: relative;
+		}
+		#tw{ 
+			border-top: 1px solid #000;
+			padding: 0.1rem;
+			position: relative;
+		}
+		#wt{ 
+			border-top: 1px solid #000;
+			padding-left: 0.6rem;
+			padding-top: 0.1rem;
+			position: relative;
+		}
+		.touxiang{
+			display: inline-block;
+			width: 1rem;
+			height: 1rem;
+			background: url("img/fabu/img_4@2x.png") 0 0 no-repeat;
+			background-size: 100%;
+			
+		}
+		.nickname{
+			display: inline-block;
+			height:0.1rem;
+			font-size: 0.1rem; 
+			position: absolute;
+			left: 1.2rem;
+			top: 0.2rem;
+		}
+		.date{
+			display: inline-block;
+			height:0.1rem;
+			font-size: 10px; 
+			position: absolute;
+			left: 1.2rem;
+			top: 0.63rem;
+		}
+		.time{
+			display: inline-block;
+			height:0.1rem;
+			font-size: 10px; 
+			position: absolute;
+			left: 1.2rem;
+			top: 0.73rem;
+		}
+		.nr{
+			display: inline-block;
+			height:0.1rem;
+			font-size: 20px; 
+			position: absolute;
+			left: 2rem;
+			top: 0.13rem;
+		}
+		.hc{
+			color: white;
+			display: none;
+			position: fixed;
+			top: 0;
+			width: 100%;
+			height: 3.7rem;
+			font-size: 1rem;
+			text-align: center;
+			background: rgba(0,0,0,0.5);
+		}
+		.yincang{
+			color: white;
+			display: none;
+			position: fixed;
+			width: 100%;
+			height: 3.7rem;
+			top: 0;
+			font-size: 1rem;
+			text-align: center;
+			background: rgba(0,0,0,0.5);
+		}
+		.touxiang1{
+			display: inline-block;
+			width: 0.7rem;
+			height: 0.7rem;
+			background: url("img/fabu/img_4@2x.png") 0 0 no-repeat;
+			background-size: 100%;
+			
+		}
+		.nickname1{
+			display: inline-block;
+			height:0.1rem;
+			font-size: 15px; 
+			position: absolute;
+			left: 1.4rem;
+		}
+		.date1{
+			display: inline-block;
+			height:0.1rem;
+			font-size: 0.07rem; 
+
+			position: absolute;
+			left: 1.4rem;
+			top: 0.7rem;
+		}
+		.time1{
+			display: inline-block;
+			height:0.10rem;
+			font-size: 7px; 
+			position: absolute;
+			left: 1.4rem;
+			top: 0.8rem;
+		}
+		.nr1{
+			display: inline-block;
+			height:0.10rem;
+			font-size: 17px; 
+			position: absolute;
+			left: 2.2rem;
+			top: 0.10rem;
+		}
+		#tijiao{
+			width: 0.4rem;
+			height: 0.3rem;
+		}
+		.qid{display: none;}
+		.uid{display: none;}
+		.sid{display: none;}
+		.u_id{display: none;}
+		.tichu{font-size: 20px;}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<span class="u_id">$user.uid</span>
+		<!--<a href="/bluesky/tichu">提出问题</a>-->
+		#foreach($question in $questionsList)
+		<div>
+			<p class='wenti' id="tw">
+				<span class="touxiang">
+					<span class="qid">$question.qid</span>
+				</span>
+				<span class="nickname">
+					$user.nickName
+					<span class="uid">$question.uid</span>
+				</span>
+				#set($a=$question.time.year+1900)
+				#set($b=$question.time.month+1)		
+				<span class="date">$question.time.hours:$question.time.minutes</span>
+				<span class="time">$a&ndash;$b&ndash;$question.time.date</span>
+				<span class="nr">$question.intro</span>
+			</p>
+			#if($!{question.solutions.size()}>1)
+			#foreach($sl in $question.solutions)
+			<div>
+				<p class='wenti' id='wt'>
+					<span class='touxiang1'>
+						<a class='sid'>$sl.sid</a>
+					</span>
+					#set($c=$sl.time.year+1900)
+					#set($d=$sl.time.month+1)		
+					<span class='nickname1'>$user.nickName</span>
+					<span class='date1'>$sl.time.hours:$sl.time.minutes</span>
+					<span class='time1'>$a&ndash;$b&ndash;$sl.time.date</span>
+					<span class='nr1'>$sl.content</span>
+					</p>
+			</div>
+			#end 
+			#end
+		</div>
+		#end 
+		<div class="hc">
+			<p class="huifu">回复</p>
+			<p class="shanchu">删除</p>
+		</div>
+		<div class="yincang">
+			
+		</div>
+	</div>	
+	<a href="/bluesky/register/getAllArticles">返回</a>
+</body>
+<script>
+
+	fn=function(){
+		$(".wenti").click(function(){
+			$(".hc").show()
+			if($(this).attr("id")=="tw"){
+				$_this1=$(this)
+			}else{
+				$_this1=$(this).parent().parent()
+			}
+			$_this=$(this).parent()
+			$(".shanchu").click(function(){
+				$(".hc").hide()
+				$_this.remove()
+				//删除解答
+				if ($_this.find("p").attr("id")=="wt") {
+					var params2={};
+					params2.sid= $_this.find("p").find(".sid").html();
+					params2.uid= $(".uid").html();
+					$.ajax({  
+				        async:false,  
+				        type: "GET",  
+				        url: "xxx",//路径 
+				        data:params2,  
+				        dataType:"json",
+				        success:function(data){   
+				            console.log(data); 
+				        },  
+				        error:function(data){  
+				            console.log(data);  
+				        }    
+			   		 });  
+				}
+				//删除问题
+				if ($_this1.attr("id")=="tw") {
+					var params1={};
+					params1.qid= $_this1.find(".qid").html();
+					params1.uid= $_this1.find(".uid").html();
+					$.ajax({  
+				        async:false,  
+				        type: "GET",  
+				        url: "delete",//路径 
+				        data:params1,  
+				        dataType:"json",
+				        success:function(data){   
+				            console.log(data); 
+				        },  
+				        error:function(data){  
+				            console.log(data);  
+				        }    
+			   		 });  
+				}	
+				$(".hc").hide()
+			})
+			$(".huifu").click(function(){
+				$(".yincang").show()
+				$(".yincang").html("<input type='text' name='' value='' id='tijiao'>"
+				+"<p id='tj'>提交</p>")
+				$("#tj").click(function(){
+					$(".yincang").hide()
+					var nowDate2=new Date();
+					var year2=nowDate2.getFullYear();
+					var month2=nowDate2.getMonth()+1;
+					var day2=nowDate2.getDate();
+					var hour2=nowDate2.getHours();
+					var minu2=nowDate2.getMinutes();
+					if (month2<10) {
+						month2="0"+month1;
+					}
+					if (day2<10) {
+						day2="0"+day1;
+					}
+					if (hour2<10) {
+						hour2="0"+hour1;
+					}
+					if (minu2<10) {
+						minu2="0"+minu2;
+					}
+					var sid;
+					var params2={};
+					params2.qid= $_this1.find(".qid").html();
+
+					params2.uid= $(".u_id").html();
+					params2.nr=$("#tijiao").val();
+					params2.tm=nowDate2;
+					$.ajax({  
+				        async:false,  
+				        type: "GET",  
+				        url: "vvv",//路径 
+				        data:params2,  
+				        dataType:"json",
+				        success:function(data){   
+				            sid=data;
+				        },  
+				        error:function(data){  
+				            console.log(data);  
+				        }    
+			   		 }); 
+					var hs=$("<div></div>")
+					var st= $("#tijiao").val()
+					hs.html("<p class='wenti' id='wt'>"+"<span class='touxiang1'>"+"<a class='sid'>"+sid+"</a>"+"</span>"
+									+"<span class='nickname1'>回复昵称@发布昵称</span>"
+									+"<span class='date1'></span>"
+									+"<span class='time1'></span>"
+									+"<span class='nr1'>"+$("#tijiao").val()+"</span>"
+									+"</p>")
+					$_this1.after(hs)
+					$(".yincang").html("")
+					fn()
+				})
+				$(".hc").hide()
+			})
+		})
+	}
+	fn()
+	function rem(){
+		var html=document.getElementsByTagName('html')[0];
+		var ww=document.documentElement.clientWidth;
+		var scale=ww/750;
+		html.style.fontSize=scale*100+"px";
+	}
+	rem();
+	window.onresize=function(){
+		rem();
+	}	
+</script>
+</html>

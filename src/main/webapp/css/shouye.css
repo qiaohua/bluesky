@@ -1,0 +1,144 @@
+html{
+			font-size: 100px;
+		}
+		.outer{
+
+			margin: 0 auto;
+			width: 7.5rem;
+			height: 12.16rem;
+			background: url(../img/shouye/bg_1@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+		}
+		.con1{
+			overflow: hidden;
+			height: 2.94rem;
+			padding-top: 0.06rem;
+			margin-right:0.06rem;
+			margin-bottom:0.06rem;
+		}
+		.tu1{
+			
+			background: url(../img/shouye/img_1@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+			width: 2.42rem ;
+			height: 2.94rem;
+			float: right;
+		}
+		.tu1 img{
+			margin-top:0.71rem ;
+			margin-left: 0.56rem;
+			margin-bottom: 0.20rem;
+			width: 1.34rem;
+			height: 1.12rem;
+		}
+		.tu1 h3{
+			font-size: 0.26rem;
+			text-align: center;
+			color: #706e6e;
+		}
+		.con2{
+			overflow: hidden;
+			height: 2.94rem;
+			margin-right:0.06rem;
+			margin-bottom:0.06rem;
+		}
+		.tu2{
+			background: url(../img/shouye/img_2@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+			width: 2.42rem ;
+			height: 2.94rem;
+			float: right;
+
+		}
+		.tu2 img{
+			margin-top:0.81rem ;
+			margin-left: 0.54rem;
+			margin-bottom: 0.18rem;
+			width: 1.40rem;
+			height: 1.08rem;
+		}
+		.tu2 h3{
+			font-size: 0.26rem;
+			text-align: center;
+			color: #fff;
+			opacity: 0.8;
+		}
+		.con3{
+			padding-top:0.06rem ;
+			overflow: hidden;
+			height: 2.94rem;
+			margin-left:0.06rem;
+			margin-bottom:0.06rem;
+		}
+		.tu3{
+			background: url(../img/shouye/img_3@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+			width: 2.42rem ;
+			height: 2.94rem;
+			float: left;
+
+		}
+		.tu3 img{
+			margin-top:0.55rem ;
+			margin-left: 0.58rem;
+			margin-bottom: 0.17rem;
+			width: 1.22rem;
+			height: 1.35rem;
+		}
+		.tu3 h3{
+			font-size: 0.26rem;
+			text-align: center;
+			color: #706e6e;
+			opacity: 0.8;
+		}
+		.con4{
+			position: relative;
+			overflow: hidden;
+			height: 2.94rem;
+			margin-left:0.06rem;
+			margin-bottom:0.06rem;
+		}
+		.tu4{
+			background: url(../img/shouye/img_4@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+			width: 2.42rem ;
+			height: 2.94rem;
+
+		}
+		.tu4 img{
+			margin-top:0.78rem ;
+			margin-left: 0.55rem;
+			margin-bottom: 0.17rem;
+			width: 1.36rem;
+			height: 1.14rem;
+		}
+		.tu4 h3{
+			font-size: 0.26rem;
+			text-align: center;
+			color: #fff;
+			opacity: 0.8;
+		}
+		.tu5{
+			margin-left: 0.06rem;
+			background: url(../img/shouye/img_5@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+			width: 2.42rem ;
+			height: 2.94rem;
+			position: absolute;
+			left:2.48rem ;
+			top: 0;
+
+		}
+		.tu5 img{
+			margin-top:0.68rem ;
+			margin-left: 0.60rem;
+			margin-bottom: 0.14rem;
+			width: 1.24rem;
+			height: 1.24rem;
+		}
+		.tu5 h3{
+			font-size: 0.26rem;
+			text-align: center;
+			color: #fff;
+			opacity: 0.8;
+		}
